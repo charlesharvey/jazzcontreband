@@ -1,0 +1,72 @@
+
+/*Colonnes*/
+
+.black{ 
+	background: $black; 
+	p, h1, h2, h3, h4, h5, h6, li, a, a:link, a:visited, a:focus, a:hover{
+		color:white;
+	}
+}
+
+.white, .black {
+	padding: 50px 15px;
+}
+
+.checkers .title, .stripes .title{
+	padding: 10px 20px;
+    margin: 20px 20px 0;
+    display: inline-block;
+    background: hsla(0,0%,100%,.95);
+}
+
+.checkers .content, .stripes .content{
+	padding: 10px 20px;
+	margin: 20px;
+	background: hsla(0,0%,100%,.95);
+}
+
+.sectioncol.checkers, .sectioncol.stripes {
+	border-left:solid 5px white;
+	border-right:solid 5px white;
+	border-top:solid 10px white;
+	border-bottom:solid 10px white;
+}
+
+.content {padding: 0 20px;}
+
+
+@media (min-width: 1200px){
+	.white .content, .black .content {width:1170px}
+	.section2col .white .content, .section2col .black .content {width:585px;}
+	.section2col .colnmb1.white .content, .section2col .colnmb1.black .content{float: right;} 
+}
+
+
+
+
+
+/*Partenaires*/
+
+section.section.section_partners {
+    padding: 20px 0;
+}
+
+#partner_logos {
+    text-align: center;
+    margin: auto;
+}
+
+.partenaire_inner {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    width: 60%;
+    margin: 0 20% 5px;
+    height: 100px;
+}
+
+
+
+
+
+

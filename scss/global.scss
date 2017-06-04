@@ -1,0 +1,183 @@
+
+@import "reset";
+@import "bxslider";
+@import "variables";
+@import "header";
+@import "patterns";
+@import "sections";
+
+body {
+	font: $font;
+	line-height: 150%;
+	background: white;
+	color: $black;
+}
+
+/*TYPOGRAPHY*/
+h1,h2,h3,h4,h5 {line-height: 125%;}
+
+h1 {padding:0 0 0px;font-weight: normal; line-height: 150%;
+    font-size: 4em;}
+h2 {font-size: 3em; padding: 0 0 0px; line-height: 170%;}
+h3 {font-size: 2.21em;padding:0 0 20px;}
+h4 {font-size: 1.69em;padding:0 0 10px;font-weight: bold;text-transform: uppercase}
+
+p { font-size: 1.5em;padding:0 0 30px;line-height: 160%;  }
+li { font-size: 1.5em;padding:0 0 5px;line-height: 160%  }
+
+section p, section li {font-size:2em;}
+
+
+li li, li p , dl p , dl li {font-size: inherit;}
+ul ul , ul ol, ol ol, dl ul, dl ol {font-size: inherit}
+
+
+dl {
+	margin: 0 0 20px;
+	font-size: 1.5em
+}
+dt {
+	font-weight: bold;
+	padding:0 0 5px;
+}
+dd {
+	margin: 0 0 15px;
+}
+
+
+
+@media (min-width: 1200px){
+	h1 {font-size: 5em;}
+	h2 {font-size: 3.4em}
+	h3 {font-size: 2.41em}
+	h4 {font-size: 1.79em}
+	section p, section li  {font-size: 2.2em;}
+
+}
+
+
+
+
+
+a {transition: all 0.3s}
+a:link, a:active, a:visited {color: #b08453}
+a:hover {color:#f39e41}
+
+h6 a {
+	border: 2px solid $primary-color;
+    border-radius: 7px;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0;
+    color: $primary-color!important;
+    padding: 10px 20px 14px;
+    position: relative;
+    font-size: 1.8em;
+    text-decoration: none;
+    &:link, &:active, &:focus {
+    	color:$primary-color!important;
+    }
+    &:hover{
+    	background-color: $primary-color;
+    	color: $black!important;
+    }
+
+}
+
+strong, b {font-weight: bold;}
+em, i {font-style: italic}
+
+table {
+	width: 100%;
+	margin:0 0 40px;
+}
+
+th, td {font-size: 1.5em;padding:10px;border:0}
+section td {font-size: 2em;line-height: 160%;padding:0 0 10px;}
+
+blockquote {
+	padding:20px 0 20px 40px;
+	border-left:4px solid #888;
+	margin:40px 20px 40px 40px;
+	font-size: 140%;
+	font-style: italic;
+	max-width: 700px;
+}
+blockquote p:last-child {padding-bottom: 0}
+
+form {
+	margin: 0 0 20px;
+}
+
+	form li {
+		font-size: 1em;
+		margin:0 0 20px;
+	}
+	input, textarea {padding: 10px;width: 100%;font-size: 1.5em;appearance:none;border:1px solid #f1f1f1}
+	textarea {height: 100px;}
+
+
+section img {width: 100%; height:auto;}
+
+@media (min-width: 768px){
+	section img {
+		width: 70%;
+	    height: auto;
+	    margin: auto 15%;
+	}
+}
+
+
+
+
+
+
+	/*MEMBERS MAP*/
+	#member_map_container {
+		height: 400px;
+		width:100%;
+		margin:30px 0;
+		background: #f1f1f1;
+	}
+	#member_map_container.small_map {
+		height: 200px;
+	}
+	.member_image img {
+		width: 100%;
+		height: auto;
+	}
+
+
+
+/*REPERAGE*/
+a.edit_link {
+	font-size: 60%;
+	color: #aaa;
+}
+
+
+
+
+
+
+
+	/*FOOTER*/
+	footer {
+		background:$black;
+		color: white;
+		padding:20px 0;
+		margin:20px 0 0;
+		text-align: center;
+		a, a:link, a:focus, a:hover, a:visited{
+			color: white;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	}
+
+	footer p {
+		padding:0
+	}
+	footer a {
+		color: white;
+	}

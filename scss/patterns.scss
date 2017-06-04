@@ -1,0 +1,25 @@
+.border_image.border_top {
+    top: 0;
+    height: 30px;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.border_image {
+    position: absolute;
+    background-size: 60px;
+    z-index: 1;
+}
+
+.yellow_stripes, .stripes {
+    background-image: url(../img/yellow_stripes.png);
+}
+
+.checkers {
+     background-image: url(../img/black_checks.png);
+}
+
+.black_checks, .black_stripes, .white_checks, .yellow_stripes, .stripes, .checkers {
+    background-repeat: repeat;
+}
