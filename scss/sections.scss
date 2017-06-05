@@ -8,6 +8,7 @@
 	}
 }
 
+.white {background-color: white;}
 .white, .black {
 	padding: 50px 15px;
 }
@@ -63,6 +64,18 @@ section.section.section_partners {
     width: 60%;
     margin: 0 20% 5px;
     height: 100px;
+}
+
+
+
+/*Repérages*/
+
+li.reperage_box {
+    list-style: none;
+    box-shadow: 0px 0px 16px rgba(0,0,0,0.3);
+    padding: 40px 0 20px;
+    margin-bottom: 30px;
+    border-radius: $border-radius;
 }
 
 

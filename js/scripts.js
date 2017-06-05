@@ -4,7 +4,29 @@
 
 		'use strict';
 
+		$('.forgottenpassword').on('click', function(){
+			$('.loginform').hide();
+			$('.lostpasswd').show();
+		})
 
+		$('.notforgotten').on('click', function(){
+			$('.lostpasswd').hide();
+			$('.loginform').show();
+		})
+
+		$('.lostpasswd, .loginform').on('click', function(event){
+			event.stopPropagation();
+		})
+
+		$('a.login').on('click', function(event){
+			event.preventDefault();
+			$('.loginformcontainer').show();
+		})
+
+		$('.loginformcontainer').on('click', function(){
+			$(this).hide();
+			$('body').css({'height' : 'auto'});
+		})
 
 		var $navigation_menu = $('#navigation_menu');
 		var $menu_button = $('#menu_button');

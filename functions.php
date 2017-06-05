@@ -117,6 +117,7 @@ function webfactor_header_scripts()
     }
 }
 
+
 // Load webfactor  conditional scripts
 function webfactor_conditional_scripts()
 {

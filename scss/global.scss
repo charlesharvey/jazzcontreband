@@ -65,7 +65,7 @@ a:hover {color:#f39e41}
 
 h6 a {
 	border: 2px solid $primary-color;
-    border-radius: 7px;
+    border-radius: $border-radius;
     display: inline-block;
     text-align: center;
     margin: 10px 0;

@@ -27,9 +27,9 @@
 					<?php chilly_nav('header-menu'); ?>
 					<?php if(is_user_logged_in()) : ?>
 						<?php chilly_nav('loggedin-menu'); ?>
-						<li><a href="<?php echo wp_logout_url( site_url('/')  ); ?>">Logout</a></li>
+						<li><a href="<?php echo wp_logout_url( site_url('/')  ); ?>">Déconnexion</a></li>
 					<?php else: ?>
-						<li><a href="<?php echo  site_url('/login'); ?>">Login</a></li>
+						<li><a class="login" href="<?php echo  site_url('/login'); ?>">Connexion</a></li>
 					<?php endif; ?>
 				</ul>
 
@@ -61,4 +61,36 @@
 				<a href="#" id="menu_button" >Menu</a>
 			</div> -->
 
+
+
 		</header>
+			<?php if(!is_user_logged_in()) : ?>
+				<div class="loginformcontainer">
+					<div>
+						<div class="loginform black insideform">
+							<h3>Connexion</h3>
+							<?php wp_login_form(); ?>
+							<p class="forgottenpassword">- Mot de passe oublié -</p>
+						</div>
+					</div>
+				
+					<div class="lostpasswd black insideform">
+						<h3>Mot de passe oublié</h3>
+						<p>Entrez votre adresse email pour recevoir votre nouveau mot de passe</p>
+						<form method="post" action="<?php echo site_url('wp-login.php?action=lostpassword', 'login_post') ?>" class="wp-user-form">
+							<div class="username">
+								<label for="user_login" class="hide"><?php _e('Username or Email'); ?>: </label>
+								<input type="text" name="user_login" value="" size="20" id="user_login" tabindex="1001" />
+							</div>
+							<div class="login_fields">
+								<?php do_action('login_form', 'resetpass'); ?>
+								<input type="submit" name="user-submit" value="<?php _e('Reset my password'); ?>" class="user-submit" tabindex="1002" />
+								<?php $reset = $_GET['reset']; if($reset == true) { echo '<p>A message will be sent to your email address.</p>'; } ?>
+								<input type="hidden" name="redirect_to" value="<?php echo esc_attr($_SERVER['REQUEST_URI']); ?>?reset=true" />
+								<input type="hidden" name="user-cookie" value="1" />
+							</div>
+						</form>
+						<p class="notforgotten">- Pas oublié? Connexion -</p>
+					</div>
+				</div>
+			<?php endif; ?>
