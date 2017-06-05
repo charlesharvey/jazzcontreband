@@ -367,7 +367,6 @@ function options_page_for_security(){ ?>
       global $post;
       return (is_user_logged_in()   &&
       $post &&
-      is_post_type_archive( 'reperage' ) &&
       $post->post_author == get_current_user_id() );
 
     }

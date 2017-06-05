@@ -8,18 +8,20 @@ $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 <div class="white">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-3 col-sm-push-9">
+			<div class="col-sm-4 col-sm-push-8">
 
-<form method="get">
-<label for="search_rep">Search Terms</label>
-<input type="text" id="search_rep" name="search" value="<?php echo $rs; ?>" />
-<label><input type="radio" name="which" value="content" <?php echo ($rw == 'content' || !$rw ) ? 'checked' : '';   ?>  />Content</label>
-<label><input type="radio" name="which" value="fields" <?php echo ($rw == 'fields') ? 'checked' : '';   ?>  />Fields</label>
-</form>
+				<aside>
+					<form method="get">
+					<label for="search_rep">Search Terms</label>
+					<input type="text" id="search_rep" name="search" value="<?php echo $rs; ?>" />
+					<label><input type="radio" name="which" value="content" <?php echo ($rw == 'content' || !$rw ) ? 'checked' : '';   ?>  />Content</label>
+					<label><input type="radio" name="which" value="fields" <?php echo ($rw == 'fields') ? 'checked' : '';   ?>  />Fields</label>
+					</form>
+				</aside>
 
 
 			</div>
-			<div class="col-sm-9 col-sm-pull-3">
+			<div class="col-sm-8 col-sm-pull-4">
 				<?php
 
 			if (isset($rs) && $rs != '' ):

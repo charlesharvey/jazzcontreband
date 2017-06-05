@@ -146,6 +146,27 @@ p.added {
 		    margin-right: 3px;
 		}
 	}
+	.adresse {
+		display: block;
+		 p{
+			font-size: 1em;
+			display: inline-block;
+		}
+
+		i {
+			vertical-align: top;
+			top: 5px;
+			position: relative;
+		}
+	}
+}
+
+
+aside {
+    background: black;
+    border-radius: 7px;
+    padding: 20px;
+    color: white;
 }
 
 

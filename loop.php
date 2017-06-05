@@ -15,9 +15,7 @@
 		<h2>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
 
-			<?php if( current_user_made_reperage()  ) : ?>
-				<?php echo  edit_reperage_link( get_the_ID()  ); ?>
-			<?php endif; ?>
+			
 		</h2>
 
 
