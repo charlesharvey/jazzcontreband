@@ -12,7 +12,7 @@ function reperage_fields(){
 
         'formation_artiste' => 'Formation - Artiste',
         'commentaires' => 'Description',
-        'reperage_date' => 'Date',
+     //   'reperage_date' => 'Date',
         'lien_1' => 'Lien 1 (site web, youtube etc.)',
         'lien_2' => 'Lien 2',
         'lien_3' => 'Lien 3',
@@ -71,8 +71,17 @@ function reperage_form_shortcode($atts , $content = null) {
 
   $rp_frm .= '<ul>';
 
+  $rp_frm .=  make_reperage_field($fields[], $translation,  $reperage_id, 'textarea');
+
+
+
   foreach ($fields as $field => $translation) :
-    $rp_frm .=  make_reperage_field($field, $translation,  $reperage_id);
+    if ($field == 'commentaires') {
+      $rp_frm .=  make_reperage_field($field, $translation,  $reperage_id, 'textarea');
+    } else {
+      $rp_frm .=  make_reperage_field($field, $translation,  $reperage_id);
+    }
+
   endforeach;
 
 
@@ -250,7 +259,7 @@ function jazz_change_upload_directory( $dirs ) {
 
 //
 
-function make_reperage_field($attribute, $translation,  $reperage_id) {
+function make_reperage_field($attribute, $translation,  $reperage_id, $type='input') {
 
 
 
@@ -260,11 +269,23 @@ function make_reperage_field($attribute, $translation,  $reperage_id) {
     $value = '';
   }
 
+  if ($type == 'textarea') {
+   
 
-  return '<li>
+   return '<li>
+  <label for="inp_'. $attribute .'">'.  $translation   .'</label>
+    <textarea  id="inp_'. $attribute .'"  name="'. $attribute.'" placeholder="'. $translation.'" > '. $value .'</textarea>
+  </li>';
+
+  } else {
+
+   return '<li>
   <label for="inp_'. $attribute .'">'.  $translation   .'</label>
     <input type="text"  id="inp_'. $attribute .'"  name="'. $attribute.'" placeholder="'. $translation.'" value="'. $value .'" />
   </li>';
+  }
+
+ 
 
 }
 

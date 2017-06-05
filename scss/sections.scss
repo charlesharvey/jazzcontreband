@@ -73,13 +73,79 @@ section.section.section_partners {
 li.reperage_box {
     list-style: none;
     box-shadow: 0px 0px 16px rgba(0,0,0,0.3);
-    padding: 40px 0 20px;
+    padding: 20px 0 10px;
     margin-bottom: 30px;
     border-radius: $border-radius;
+    font-size: 1em;
+}
+
+li.reperage_box .white {
+	padding: 20px;
+}
+
+li.reperage_box  h3 {
+    font-size: 2.3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    float: left;
+    width: calc(100% - 120px);
+    padding-bottom: 0;
+}
+
+.links {
+    float: right;
+    width: 120px;
+    text-align: right;
 }
 
 
+.links a {
+    font-size: 1.8em;
+    background: black;
+    color: white;
+    display: inline-block;
+    padding: 7px;
+    border-radius: 7px;
+    &:active, &:focus, &:visited, &:link {color:white;}
+    &:hover {color: $primary-color;}
+}
 
+p.added {
+    font-size: 1.5em;
+    font-style: italic;
+    padding-bottom: 10px;
+}
 
+.info-group {
+	font-size: 1.5em;
+	padding-bottom: 10px;
+	span {
+		margin-right: 10px;
+	}
+	span:before {
+	    content: '|';
+	    display: inline-block;
+	    margin-right: 10px;
+	}
+	span:first-child:before {
+		display: none;
+	}
+}
+
+.description p {
+    font-size: 1.8em;
+    padding: 10px 0;
+}
+
+.contact {
+    padding-top: 10px;
+    span {
+	    font-size: 1.5em;
+	    margin-right: 15px;
+	    i {
+		    margin-right: 3px;
+		}
+	}
+}
 
 
