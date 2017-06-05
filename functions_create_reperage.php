@@ -55,7 +55,7 @@ function reperage_form_shortcode($atts , $content = null) {
 
 
   if ($reperage) {
-    $rp_frm .= ' <p>Editing <a href="'. $reperage->guid  .'">' .   $reperage->post_title   .'</a></p>';
+    $rp_frm .= ' <p>Editing <strong>' .  $reperage->post_title   .'</strong></p>';
   }
 
 

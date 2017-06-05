@@ -1,6 +1,5 @@
 <?php
 
-$rw = ( isset($_GET['which'])) ? $_GET['which'] : false;
 $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 
 ?>
@@ -14,8 +13,6 @@ $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 					<form method="get">
 					<label for="search_rep">Search Terms</label>
 					<input type="text" id="search_rep" name="search" value="<?php echo $rs; ?>" />
-					<label><input type="radio" name="which" value="content" <?php echo ($rw == 'content' || !$rw ) ? 'checked' : '';   ?>  />Content</label>
-					<label><input type="radio" name="which" value="fields" <?php echo ($rw == 'fields') ? 'checked' : '';   ?>  />Fields</label>
 					</form>
 				</aside>
 
@@ -25,16 +22,11 @@ $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 				<?php
 
 			if (isset($rs) && $rs != '' ):
-				
-				
-				if  ($rw == 'content' ) {
-					// SEARCH THE TITLE AND THE DESCRIPTION
-					echo do_shortcode('[ajax_load_more post_type="reperage" search="'. $rs .'" ]');
-				} else {	
+
 					// SEARCH THE META FIELDS
 					$meta_keys =  implode( array_keys( reperage_fields() ) , ':' );
 					$meta_values = $meta_compares = $meta_chars = array();
-					for ($i=0; $i < sizeof( reperage_fields())  ; $i++) { 
+					for ($i=0; $i < sizeof( reperage_fields())  ; $i++) {
 						array_push($meta_values ,  $rs);
 						array_push($meta_compares ,  'LIKE');
 						array_push($meta_chars ,  'CHAR');
@@ -44,11 +36,8 @@ $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 					$meta_chars =  implode($meta_chars, ':');
 					echo do_shortcode('[ajax_load_more post_type="reperage" meta_key="'. $meta_keys .'" meta_value="'. $meta_values.'" meta_compare="'. $meta_compares.'" meta_type="'. $meta_chars.'" meta_relation="OR"   ]');
 
-
-				}
-
 			else:
-				echo do_shortcode('[ajax_load_more post_type="reperage"]'); 
+				echo do_shortcode('[ajax_load_more post_type="reperage"]');
 			endif;
 
 			?>
@@ -56,5 +45,5 @@ $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 
 			</div>
 		</div>
-	</div>	
-</div>	
+	</div>
+</div>
