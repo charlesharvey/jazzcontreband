@@ -23,10 +23,10 @@ function reperage_fields(){
         'tel_1' => 'Téléphone 1',
         'tel_2' => 'Téléphone 2',
         'email' => 'Email',
-        'adresse' => 'Adresse',
-        'postcode' => 'Code postal',
-        'city' => 'Ville',
-        'country' => 'Pays'
+        'adresse' => 'Adresse'
+        // 'postcode' => 'Code postal',
+        // 'city' => 'Ville',
+        // 'country' => 'Pays'
 
      ];
 }
