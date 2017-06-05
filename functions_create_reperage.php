@@ -7,36 +7,53 @@ add_action( 'admin_post_nopriv_reperage_form',    'get_email_from_reperage_form'
 add_action( 'admin_post_reperage_form',  'get_email_from_reperage_form' );
 
 
+function reperage_fields(){
+  return [
+
+        'formation_artiste' => 'Formation - Artiste',
+        'commentaires' => 'Description',
+        'reperage_date' => 'Date',
+        'lien_1' => 'Lien 1 (site web, youtube etc.)',
+        'lien_2' => 'Lien 2',
+        'lien_3' => 'Lien 3',
+        'style' => 'Style de musique',
+        'origine' => 'origine',
+        'numbre' => 'Nombre de musiciens',
+        'contact' => 'Contact',
+        'tel_1' => 'Téléphone 1',
+        'tel_2' => 'Téléphone 2',
+        'email' => 'Email',
+        'adresse' => 'Adresse',
+        'postcode' => 'Code postal',
+        'city' => 'Ville',
+        'country' => 'Pays'
+
+     ];
+}
+
 
 //  ADD reperage FORM AS A SHORTCODE
 add_shortcode( 'reperage_form',  'reperage_form_shortcode' );
 function reperage_form_shortcode($atts , $content = null) {
 
 
-
-
+    $fields = reperage_fields();
 
   if (isset($_GET['reperage_id'])) {
     // EDITING AN EXISTING REPERAGE
     $reperage_id = $_GET['reperage_id'] ;
     $reperage = get_post( $reperage_id );
+    //$name_of_artist = $reperage->post_title;
+    //$description = $reperage->post_content;
+    //$artist_file = '';
+    //$email_of_artist = get_post_meta( $reperage_id, 'artist_email', true);
 
-
-
-    $name_of_artist = $reperage->post_title;
-    $email_of_artist = get_post_meta( $reperage_id, 'artist_email', true);
-    $description = $reperage->post_content;
-    $artist_file = '';
   } else {
     // CREATING A NEW REPERAGE
     $reperage = false;
     $reperage_id = '';
-    $name_of_artist = '';
-    $email_of_artist = '';
-    $description = '';
-    $artist_file = '';
-  };
-
+    // $name_of_artist = ''; $email_of_artist = ''; $description = ''; $artist_file = '';
+  }
 
 
   $rp_frm = '';
@@ -49,15 +66,22 @@ function reperage_form_shortcode($atts , $content = null) {
 
 
 
+
   $rp_frm .= ' <form enctype="multipart/form-data" id="course_form" action="' .  esc_url( admin_url('admin-post.php') ) . '" method="post">';
 
   $rp_frm .= '<ul>';
 
+  foreach ($fields as $field => $translation) :
+    $rp_frm .=  make_reperage_field($field, $translation,  $reperage_id);
+  endforeach;
 
-  $rp_frm .= '<li><input type="text" name="name_of_artist"  placeholder="name of artist" value="'. $name_of_artist .'" /></li>';
-  $rp_frm .= '<li><textarea  name="description"  placeholder="description">'. $description .'</textarea></li>';
-  $rp_frm .= '<li><input type="text" name="email_of_artist"  placeholder="email of artist" value="'. $email_of_artist .'" /></li>';
-  $rp_frm .= '<li><input type="file" name="artist_file"  placeholder="file" value="'. $artist_file .'" /></li>';
+
+ // $rp_frm .= '<li><input type="text" name="name_of_artist"  placeholder="name of artist" value="'. $name_of_artist .'" /></li>';
+ // $rp_frm .= '<li><textarea  name="description"  placeholder="description">'. $description .'</textarea></li>';
+ // $rp_frm .= '<li><input type="text" name="email_of_artist"  placeholder="email of artist" value="'. $email_of_artist .'" /></li>';
+ // $rp_frm .= '<li><input type="file" name="artist_file"  placeholder="file" value="'. $artist_file .'" /></li>';
+
+
 
   $rp_frm .= '<input type="hidden" name="reperage_id" value="'. $reperage_id  .'">';
   $rp_frm .= '<input type="hidden" name="action" value="reperage_form">';
@@ -76,6 +100,8 @@ function reperage_form_shortcode($atts , $content = null) {
 
 
 
+
+
 function get_email_from_reperage_form () {
 
   // IF DATA HAS BEEN POSTED
@@ -83,10 +109,12 @@ function get_email_from_reperage_form () {
 
 
     $reperage_id = $_POST['reperage_id'];
-    $name_of_artist = $_POST['name_of_artist'];
-    $description = $_POST['description'];
-    $email_of_artist = $_POST['email_of_artist'];
-    $artist_file = $_FILES['artist_file'];
+    $formation_artiste = $_POST['formation_artiste'];
+    $commentaires = $_POST['commentaires'];
+//    $name_of_artist = $_POST['name_of_artist'];
+//    $description = $_POST['description'];
+//    $email_of_artist = $_POST['email_of_artist'];
+//    $artist_file = $_FILES['artist_file'];
 
     $current_user_id = get_current_user_id();
 
@@ -106,12 +134,12 @@ function get_email_from_reperage_form () {
 
 
     // if we  have the right data and user logged in
-    if ( !empty($name_of_artist)   && !empty($description)   && !empty($email_of_artist) && $current_user_id > 0  ) {
+    if ( !empty($formation_artiste)  && $current_user_id > 0  ) {
       $post = array(
-        'post_title'     => $name_of_artist,
+        'post_title'     => $formation_artiste,
         'post_status'    => 'publish',
         'post_type'      => 'reperage',
-        'post_content'   => $description,
+        'post_content'   => $commentaires,
         'post_author' =>  $current_user_id
 
       );
@@ -128,15 +156,28 @@ function get_email_from_reperage_form () {
       // IF SUCCESS
       if ($new_reperage > 0) {
         // add email to ACF
-        update_field( 'artist_email', $email_of_artist,  $new_reperage  );
+        //update_field( 'artist_email', $email_of_artist,  $new_reperage  );
+
+
+        $fields = reperage_fields();
+        foreach ($fields as $field => $translation) :
+          if ( $field != 'formation_artiste' && $field != 'commentaires' ) : // these are title and content
+            $$field = $_POST[$field];
+            if ($$field  != '') :
+             update_field( $field, $$field,  $new_reperage  );
+            endif;
+          endif;
+        endforeach;
+
+
 
 
         // if filesize of upload is greater than 0 bytes, ie it exists
         // add or replace the file already there
-        if ($artist_file['size'] > 0 ) {
-          $file_id = jazz_add_file_upload( $artist_file, $new_reperage );
-          update_field( 'file_upload', $file_id,  $new_reperage  );
-        }
+            // if ($artist_file['size'] > 0 ) {
+            //   $file_id = jazz_add_file_upload( $artist_file, $new_reperage );
+            //   update_field( 'file_upload', $file_id,  $new_reperage  );
+            // }
 
 
         wp_redirect(  get_permalink( $new_reperage )  );
@@ -208,6 +249,24 @@ function jazz_change_upload_directory( $dirs ) {
 //   remove_filter( 'upload_dir', 'jazz_change_upload_directory' );
 
 //
+
+function make_reperage_field($attribute, $translation,  $reperage_id) {
+
+
+
+  if ($reperage_id) {
+      $value = get_post_meta($reperage_id, $attribute, true);
+  } else {
+    $value = '';
+  }
+
+
+  return '<li>
+  <label for="inp_'. $attribute .'">'.  $translation   .'</label>
+    <input type="text"  id="inp_'. $attribute .'"  name="'. $attribute.'" placeholder="'. $translation.'" value="'. $value .'" />
+  </li>';
+
+}
 
 
 

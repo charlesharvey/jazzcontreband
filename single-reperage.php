@@ -29,8 +29,15 @@
 						<?php endif; ?>
 
 
-						<dt>Email:</dt>
-						<dd><?php echo $artist_email; ?></dd>
+						<?php foreach (  reperage_fields()  as $field => $translation) : ?>
+								<?php $acf_field =  get_field($field); ?>
+								<?php if ($acf_field && $acf_field !='') : ?>
+									<dt><?php echo $translation; ?>:</dt>
+									<dd><?php echo $acf_field; ?></dd>
+									<?php endif; ?>
+						<?php endforeach; ?>
+
+
 
 						<?php if ($file_url): ?>
 							<dt>File:</dt>
