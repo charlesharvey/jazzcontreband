@@ -170,8 +170,8 @@ function get_email_from_reperage_form () {
             //   update_field( 'file_upload', $file_id,  $new_reperage  );
             // }
 
-
-        wp_redirect(  get_permalink( $new_reperage )  );
+        wp_redirect(site_url('/reperage-admin?reperage_id=' .  $new_reperage . '&success' ), $status = 302);
+        //wp_redirect(  get_permalink( $new_reperage )  );
 
       // something went wrong with adding the reperage post
       } else {
