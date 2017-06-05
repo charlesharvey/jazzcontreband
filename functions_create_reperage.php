@@ -43,16 +43,11 @@ function reperage_form_shortcode($atts , $content = null) {
     // EDITING AN EXISTING REPERAGE
     $reperage_id = $_GET['reperage_id'] ;
     $reperage = get_post( $reperage_id );
-    //$name_of_artist = $reperage->post_title;
-    //$description = $reperage->post_content;
-    //$artist_file = '';
-    //$email_of_artist = get_post_meta( $reperage_id, 'artist_email', true);
 
   } else {
     // CREATING A NEW REPERAGE
     $reperage = false;
     $reperage_id = '';
-    // $name_of_artist = ''; $email_of_artist = ''; $description = ''; $artist_file = '';
   }
 
 
@@ -71,8 +66,6 @@ function reperage_form_shortcode($atts , $content = null) {
 
   $rp_frm .= '<ul>';
 
-  $rp_frm .=  make_reperage_field($fields[], $translation,  $reperage_id, 'textarea');
-
 
 
   foreach ($fields as $field => $translation) :
@@ -84,11 +77,6 @@ function reperage_form_shortcode($atts , $content = null) {
 
   endforeach;
 
-
- // $rp_frm .= '<li><input type="text" name="name_of_artist"  placeholder="name of artist" value="'. $name_of_artist .'" /></li>';
- // $rp_frm .= '<li><textarea  name="description"  placeholder="description">'. $description .'</textarea></li>';
- // $rp_frm .= '<li><input type="text" name="email_of_artist"  placeholder="email of artist" value="'. $email_of_artist .'" /></li>';
- // $rp_frm .= '<li><input type="file" name="artist_file"  placeholder="file" value="'. $artist_file .'" /></li>';
 
 
 
@@ -119,11 +107,7 @@ function get_email_from_reperage_form () {
 
     $reperage_id = $_POST['reperage_id'];
     $formation_artiste = $_POST['formation_artiste'];
-    $commentaires = $_POST['commentaires'];
-//    $name_of_artist = $_POST['name_of_artist'];
-//    $description = $_POST['description'];
-//    $email_of_artist = $_POST['email_of_artist'];
-//    $artist_file = $_FILES['artist_file'];
+
 
     $current_user_id = get_current_user_id();
 
@@ -145,11 +129,11 @@ function get_email_from_reperage_form () {
     // if we  have the right data and user logged in
     if ( !empty($formation_artiste)  && $current_user_id > 0  ) {
       $post = array(
-        'post_title'     => $formation_artiste,
-        'post_status'    => 'publish',
-        'post_type'      => 'reperage',
-        'post_content'   => $commentaires,
-        'post_author' =>  $current_user_id
+        'post_title'   => $formation_artiste,
+        'post_status'  => 'publish',
+        'post_type'    => 'reperage',
+        'post_content' => '',
+        'post_author'  =>  $current_user_id
 
       );
 
@@ -170,12 +154,10 @@ function get_email_from_reperage_form () {
 
         $fields = reperage_fields();
         foreach ($fields as $field => $translation) :
-          if ( $field != 'formation_artiste' && $field != 'commentaires' ) : // these are title and content
             $$field = $_POST[$field];
             if ($$field  != '') :
              update_field( $field, $$field,  $new_reperage  );
             endif;
-          endif;
         endforeach;
 
 
@@ -270,7 +252,7 @@ function make_reperage_field($attribute, $translation,  $reperage_id, $type='inp
   }
 
   if ($type == 'textarea') {
-   
+
 
    return '<li>
   <label for="inp_'. $attribute .'">'.  $translation   .'</label>
@@ -285,7 +267,7 @@ function make_reperage_field($attribute, $translation,  $reperage_id, $type='inp
   </li>';
   }
 
- 
+
 
 }
 
