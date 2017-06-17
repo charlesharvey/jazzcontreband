@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 
 
-<!-- section -->
-<section class="container">
 
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -15,48 +13,58 @@
 			<?php // add http:// if not included in the url  ?>
 			<?php $website_http = ( strpos($website, '//') > 0  ) ?  $website :  'http://' . $website   ; ?>
 
-			<div class="row">
-				<div class="col-sm-8">
-					<h1>Membre: <?php the_title(); ?></h1>
-
-					<dl>
-						<dt>Addresse:</dt>
-						<dd><?php echo $address; ?></dd>
-						<dt>Country:</dt>
-						<dd><?php echo $country; ?></dd>
-
-						<?php if ($phone != ''): ?>
-							<dt>Telephone:</dt>
-							<dd><?php echo $phone; ?></dd>
-						<?php endif; ?>
-						<?php if ($website != ''): ?>
-							<dt>Website:</dt>
-							<dd><a href="<?php echo $website_http; ?>"><?php echo $website; ?></a></dd>
-						<?php endif; ?>
-					</dl>
-
-
-
-
-
-				</div>
-				<div class="col-sm-4">
-
-					<?php echo do_shortcode('[jazz_membres_map]'); ?>
-
-
-					<?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
-						<div class="member_image">
-							<?php the_post_thumbnail(); // Fullsize image for the single post ?>
+			<section class="section  section_colonnes">
+				<div class="container-fluid section1col">
+					<div class="row">
+						<div class="sectioncol col-sm-12 white colnmb1">
+							<div class="content">
+								<h1 style="text-align: center;"><?php the_title(); ?></h1>
+								<br>
+								<div style="text-align: center;"><?php echo get_field('description'); ?></div>
+							</div>
 						</div>
-					<?php endif; ?>
+					</div> <!-- END OF ROW -->
+				</div><!--  END OF CONTAINER -->
+			</section>
 
 
-				</div>
+
+
+<section class="section  section_colonnes ">
+
+		
+
+<div class="container-fluid section2col">
+	<div class="row">
+		<div class="sectioncol col-sm-6 stripes colnmb1 nexttomap" style="height: 1049px;">
+			<div class="content membres_details">
+
+			<?php if (get_field('website')){ ?>
+				<h4><i class="fa fa-link" aria-hidden="true"></i> Site web</h4>
+				<p><a target="_blank" href="<?php echo $website_http; ?>"><?php echo $website; ?></a></p>
+			<?php } ?>
+
+			<?php if (get_field('phone')){ ?>
+				<h4><i class="fa fa-phone" aria-hidden="true"></i> Téléphone</h4>
+				<p><?php echo get_field('phone'); ?></p>
+			<?php } ?>
+
+			<?php if (get_field('address')){ ?>
+				<h4><i class="fa fa-map-marker" aria-hidden="true"></i> Adresse</h4>
+				<p><?php echo get_field('address'); ?><br><?php echo get_field('country'); ?></p>
+			<?php } ?>
+			
 			</div>
+		</div>
+		<div class="sectioncol col-sm-6 colnmb2">
+			<?php echo do_shortcode('[jazz_membres_map]'); ?>
+		</div>
+	</div> <!-- END OF ROW -->
 
 
+</div><!--  END OF CONTAINER -->
 
+	</section>
 
 		</article>
 		<!-- /article -->
@@ -75,8 +83,6 @@
 
 <?php endif; ?>
 
-</section>
-<!-- /section -->
 
 
 

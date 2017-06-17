@@ -1,27 +1,27 @@
 {
-  "name": "jazzcontrabandtheme",
+  "name": "jazzcontrebandtheme",
   "version": "0.0.1",
-  "description": "Wordpress Theme for JazzContraband made by Webfactor.ch",
+  "description": "Wordpress Theme for JazzContreband made by Webfactor.ch",
   "main": "index.php",
   "scripts": {
     "test": "say test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chillydesign/jazzcontraband.git"
+    "url": "git+https://github.com/chillydesign/jazzcontreband.git"
   },
   "keywords": [
     "wordpress",
     "webfactor",
-    "jazzcontraband",
+    "jazzcontreband",
     "theme"
   ],
   "author": "Charles Harvey",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chillydesign/jazzcontraband/issues"
+    "url": "https://github.com/chillydesign/jazzcontreband/issues"
   },
-  "homepage": "https://github.com/chillydesign/jazzcontraband#readme",
+  "homepage": "https://github.com/chillydesign/jazzcontreband#readme",
   "dependencies": {
     "bxslider": "^4.2.11"
   },

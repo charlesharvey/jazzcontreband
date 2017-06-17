@@ -37,7 +37,7 @@
 
 
 @media (min-width: 1200px){
-	.white .content, .black .content {width:1170px}
+	.white .content, .black .content {width:1170px; margin:auto;}
 	.section2col .white .content, .section2col .black .content {width:585px;}
 	.section2col .colnmb1.white .content, .section2col .colnmb1.black .content{float: right;} 
 }
@@ -70,7 +70,7 @@ section.section.section_partners {
 
 /*Repérages*/
 
-li.reperage_box {
+.reperage_box {
     list-style: none;
     box-shadow: 0px 0px 16px rgba(0,0,0,0.3);
     padding: 20px 0 10px;
@@ -79,11 +79,15 @@ li.reperage_box {
     font-size: 1em;
 }
 
-li.reperage_box .white {
-	padding: 20px;
+.reperage_box .white {
+    padding: 20px;
 }
 
-li.reperage_box  h3 {
+.reperage_box .row.white {
+    margin: 0px;
+}
+
+.reperage_box  h3 {
     font-size: 2.3em;
     text-transform: uppercase;
     font-weight: bold;
@@ -99,7 +103,7 @@ li.reperage_box  h3 {
 }
 
 
-.links a {
+.links a, a.edit_link, .membres_details i{
     font-size: 1.8em;
     background: black;
     color: white;
@@ -108,6 +112,13 @@ li.reperage_box  h3 {
     border-radius: 7px;
     &:active, &:focus, &:visited, &:link {color:white;}
     &:hover {color: $primary-color;}
+}
+
+a.edit_link {
+    width: 30px;
+    float: right;
+    background: $primary-color;
+    color: black!important;
 }
 
 p.added {
@@ -139,6 +150,8 @@ p.added {
 
 .contact {
     padding-top: 10px;
+    float: left;
+    width: calc(100% - 40px);
     span {
 	    font-size: 1.5em;
 	    margin-right: 15px;
@@ -166,8 +179,105 @@ p.added {
 aside {
     background: black;
     border-radius: 7px;
-    padding: 20px;
+    padding: 15px 30px;
     color: white;
+    font-size: 1.5em;
+    input {
+    	border-radius: $border-radius;
+    }
+    a {
+    	display: block;
+    	margin-bottom: 20px;
+    	text-decoration: none;
+    	&:link, &:visited, &:focus {
+    		color:white;
+    	}
+    	&:hover {
+    		color: $primary-color;
+    	}
+    }
+
+    h6 a {
+		font-size: 1em;
+		display: block;
+		text-transform: uppercase;
+		padding: 15px;
+    }
+    h4 {
+    	padding: 20px 0;
+    }
+    label {
+        font-size: 1em;
+    }
+}
+
+button#load-more {
+    display: none;
+}	
+
+label {
+    font-size: 1.5em;
+    display: inline-block;
+    margin: 20px 0 5px;
+}
+
+textarea {height: 120px!important;}
+textarea, input {border-color: $black!important;}
+
+
+/*Downloads*/
+
+.section_downloads .introduction {margin-bottom: 30px;}
+section.section.section_downloads i {
+    position: relative;
+    top: 1px;
+    margin-right: 5px;
 }
 
 
+.section_downloads a {
+    text-decoration: none;
+}
+
+
+/*Salles*/
+
+a.map_link {
+    text-decoration: none;
+    color: black;
+    &:link, &:visited, &:focus, &:hover{color:black;}
+}
+
+a.member_link {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+
+    &:link, &:visited, &:focus, &:hover{color:black;}
+    &:hover{background: #ffed00;}
+}
+
+p.membre_ville {
+    font-style: italic;
+    font-size: 1.5em;
+    margin: -10px 0 -30px;
+}
+
+.membres_details p {
+    font-size: 1.5em;
+    margin: -5px 0;
+}
+
+.membres_details i {
+    font-size: 0.6em;
+    position: relative;
+    top: -3px;
+        width: 25px;
+    text-align: center;
+}
+
+
+.single-membre div#member_map_container {
+    margin-top: 10px;
+}

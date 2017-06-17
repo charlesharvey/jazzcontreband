@@ -21,7 +21,7 @@
 
 
 		<header class="header" id="header">
-			<a href="<?php echo home_url(); ?>"  id="branding"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Jazz Contraband"> <span>Jazz Contraband</span></a>
+			<a href="<?php echo home_url(); ?>"  id="branding"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Jazz Contreband"> <span>Jazz Contreband</span></a>
 			<nav id="navigation_menu" role="navigation">
 				<ul>
 					<?php chilly_nav('header-menu'); ?>
@@ -31,6 +31,7 @@
 					<?php else: ?>
 						<li><a class="login" href="<?php echo  site_url('/login'); ?>">Connexion</a></li>
 					<?php endif; ?>
+					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-377"><a target="_blank" href="https://www.facebook.com/jazzcontreband"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 				</ul>
 
 			</nav>

@@ -19,6 +19,7 @@ h1,h2,h3,h4,h5 {line-height: 125%;}
 h1 {padding:0 0 0px;font-weight: normal; line-height: 150%;
     font-size: 4em;}
 h2 {font-size: 3em; padding: 0 0 0px; line-height: 170%;}
+h1 + p, h2 + p {margin-top: 30px;}
 h3 {font-size: 2.21em;padding:0 0 20px;}
 h4 {font-size: 1.69em;padding:0 0 10px;font-weight: bold;text-transform: uppercase}
 
@@ -63,7 +64,7 @@ a {transition: all 0.3s}
 a:link, a:active, a:visited {color: #b08453}
 a:hover {color:#f39e41}
 
-h6 a {
+h6 a, #submit_course_form {
 	border: 2px solid $primary-color;
     border-radius: $border-radius;
     display: inline-block;
@@ -83,6 +84,10 @@ h6 a {
     }
 
 }
+
+#submit_course_form, .white h6 a, .checkers h6 a, .stripes h6 a {background: black; border:none; color: white!important; text-transform: uppercase;font-weight: bold; cursor: pointer;}
+
+p + h6 a {margin-top: -10px;}
 
 strong, b {font-weight: bold;}
 em, i {font-style: italic}
@@ -120,6 +125,10 @@ form {
 
 
 section img {width: 100%; height:auto;}
+img.pleine_largeur {
+    margin: auto;
+    width: 100%;
+}
 
 @media (min-width: 768px){
 	section img {
@@ -138,7 +147,6 @@ section img {width: 100%; height:auto;}
 	#member_map_container {
 		height: 400px;
 		width:100%;
-		margin:30px 0;
 		background: #f1f1f1;
 	}
 	#member_map_container.small_map {
@@ -151,13 +159,6 @@ section img {width: 100%; height:auto;}
 
 
 
-/*REPERAGE*/
-a.edit_link {
-	font-size: 60%;
-	color: #aaa;
-}
-
-
 
 
 
@@ -168,7 +169,6 @@ a.edit_link {
 		background:$black;
 		color: white;
 		padding:20px 0;
-		margin:20px 0 0;
 		text-align: center;
 		a, a:link, a:focus, a:hover, a:visited{
 			color: white;

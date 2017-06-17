@@ -207,7 +207,7 @@ function create_post_type_logo()
 add_shortcode('jazz_login' ,'jazz_shortcode_login');
 function jazz_shortcode_login($atts, $content = null) // Demo Heading H2 shortcode, allows for nesting within above element. Fully expandable.
 {
-  $members_space_page = get_page_by_path('members-space');
+  $members_space_page = get_page_by_path('espace-membres');
   $args = array(
     'redirect' => $members_space_page->guid,
     'echo' => false,
@@ -374,7 +374,7 @@ function options_page_for_security(){ ?>
 
     function edit_reperage_link($id){
 
-      echo '<a class="edit_link" href="'. site_url('reperage-admin') . '?reperage_id='.  $id .'">(Edit)</a>';
+      echo '<a class="edit_link" href="'. site_url('reperage-admin') . '?reperage_id='.  $id .'"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
     }
 
 

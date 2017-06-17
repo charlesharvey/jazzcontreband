@@ -5,9 +5,10 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 
 ?>
 
-<div class="white">
+<div class="white" id="reperages">
 	<div class="container">
 		<div class="row">
+		<h2 style="text-align:center; margin-bottom:50px">Repérages</h2>
 			<div class="col-sm-4 col-sm-push-8">
 
 				<aside>
@@ -17,10 +18,11 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 					</label>
 					<input type="text" id="search_rep" name="search" value="<?php echo $rs; ?>" />
 					</form>
+					<a href="?#reperages">> Tous les repérages</a>
 
 					<h4>Mes repérages</h4>
-					<a href="?auteur=<?php echo get_current_user_id(); ?>">> Tous mes repérages</a>
-					<a href="<?php echo site_url('/reperage-admin')?>">Ajouter un repérage</a>
+					<a href="?auteur=<?php echo get_current_user_id(); ?>#reperages">> Tous mes repérages</a>
+					<h6><a href="<?php echo site_url('/reperage-admin')?>">Ajouter un repérage</a></h6>
 
 
 				</aside>
