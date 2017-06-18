@@ -11,7 +11,7 @@
 			<div class="col-sm-8">
 
 				<div id="events_container">
-					<span class="loading"></span> 
+					<span class="loading"></span>
 				</div>
 
 
@@ -34,8 +34,10 @@
 		</div>
 	</div>
 </div>
+
+<?php $event_type = get_sub_field('event_type'); ?>
 <script type="text/javascript">
-	var calendar_api_url = '<?php echo home_url(); ?>/api/v1/?evenement_festival=true';
+	var calendar_api_url = '<?php echo home_url(); ?>/api/v1/?<?php echo ($event_type); ?>=true';
 </script>
 
 

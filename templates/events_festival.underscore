@@ -13,11 +13,11 @@
 
 								<div class="row">
 									<div class="col-sm-5">
-										<div class="event_image" style="background-image:url('https://images.pexels.com/photos/12312/pexels-photo-12312.jpeg?h=350&auto=compress&cs=tinysrgb');"></div>
+										<div class="event_image" style="background-image:url('<%= event.thumbnail %>');"></div>
 									</div>
 									<div class="col-sm-7">
 										<h3><%= event.post_title %></h3>
-										<p><%= event.line_up %></p>
+										<p><%= event.nice_date %></p>
 									</div>
 								</div>
 							</div>

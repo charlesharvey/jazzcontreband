@@ -96,14 +96,10 @@
 			var $calendar_template = $('#calendar_template').html();
 			var $events_calendar = $('#events_calendar');
 			var $events_title = $('#events_title');
-			var now = moment().startOf('month');
-			var start = now.format("YYYY-MM-DD");
-			var end =  now.add(1, 'months').subtract(1, 'day').format("YYYY-MM-DD");
 
 
 			$.ajax({
-				url: calendar_api_url,
-				data: {start: start, end: end }
+				url: calendar_api_url
 			}).done(function( data ) {
 
 				// ORIGINAL SET OF EVENTS
@@ -119,6 +115,11 @@
 					template: $calendar_template,
 					forceSixRows: true,
 					events: data,
+					startWithMonth: "2017-10-01",
+					// constraints: {
+					// 		startDate: '2017-12-22',
+					// 		endDate: '2018-01-09'
+					// },
 					multiDayEvents: {
 						singleDay: 'date',
 						endDate: 'endDate',
@@ -288,6 +289,15 @@ function processEvents(events, date){
 	// PROCESS ARRAY
 	for (var i = 0; i < events_array.length ; i++) {
 		var event = events_array[i];
+
+			if (typeof event['startDate'] != 'undefined' ) {
+				event['nice_date']   =   event['startDate'] + ' - ' + event['endDate'];
+			} else {
+				event['nice_date']   = event['date'];
+			}
+
+
+
 	}
 	return events_array;
 }
