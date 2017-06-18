@@ -4,6 +4,12 @@
 
 		'use strict';
 
+
+
+
+
+
+
 		$('.forgottenpassword').on('click', function(){
 			$('.loginform').hide();
 			$('.lostpasswd').show();
@@ -75,6 +81,89 @@
 
 
 
+		// CALENDAR
+		if (typeof calendar_api_url != 'undefined'){
+
+
+
+			var $events_container = $('#events_container');
+			var $events_template = $('#events_template').html();
+
+
+
+
+			var $calendar_template = $('#calendar_template').html();
+			var $events_calendar = $('#events_calendar');
+			var now = moment().startOf('month');
+			var start = now.format("YYYY-MM-DD");
+			var end =  now.add(1, 'months').subtract(1, 'day').format("YYYY-MM-DD");
+
+
+			console.log(calendar_api_url);
+
+			$.ajax({
+				url: calendar_api_url,
+				data: {start: start, end: end }
+			}).done(function( data ) {
+
+				// ORIGINAL SET OF EVENTS
+				var original_events = data;
+				var events = processEvents(original_events);
+
+				var compiled =  _.template($events_template);
+
+
+				displayEvents(events, $events_container, compiled)
+
+				var cal1 = $events_calendar.clndr({
+					template: $calendar_template,
+					forceSixRows: true,
+					events: data,
+					multiDayEvents: {
+						singleDay: 'date',
+						endDate: 'endDate',
+						startDate: 'startDate'
+					},
+					clickEvents: {
+						click: function (target) {
+								var target_date = target.date._i;
+								var processed_events = processEvents(original_events, target_date);
+								displayEvents(processed_events, $events_container, compiled)
+						}
+
+					}
+				});
+
+
+
+
+
+
+
+
+			});
+
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		// MEMBERS MAP
@@ -85,7 +174,7 @@
 			// var map_theme = [{"featureType":"all","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"all","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"administrative.province","elementType":"labels.text.fill","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels.text","stylers":[{"color":"#ffffff"}]},{"featureType":"administrative.neighborhood","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20},{"visibility":"off"},{"saturation":"100"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#000000"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#292929"}]},{"featureType":"landscape.man_made","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#000000"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.fill","stylers":[{"visibility":"simplified"},{"hue":"#ff0000"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#fcea1d"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#fcea1d"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#fcea1d"},{"lightness":18}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"lightness":"-10"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"#fcea1d"},{"lightness":"-52"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"visibility":"off"},{"color":"#fcea1d"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#fcea1d"},{"lightness":17},{"visibility":"on"},{"saturation":"-60"}]}];
 
 			// var map_theme = [{"featureType":"all","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"color":"#e5c163"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#c4c4c4"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#e5c163"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"landscape","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21},{"visibility":"on"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#fcea1d"},{"lightness":"0"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.highway","elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#fcea1d"},{"lightness":"-37"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.text.stroke","stylers":[{"color":"#2c2c2c"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fcea1d"},{"lightness":"-84"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#999999"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#fcea1d"},{"lightness":"-30"},{"saturation":"-100"}]}];
-			
+
 			var map_theme = [{"featureType":"all","elementType":"all","stylers":[{"hue":"#ff0000"},{"saturation":-100},{"lightness":-30}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#353535"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#656565"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"lightness":"-31"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#505050"},{"lightness":"-14"}]},{"featureType":"poi","elementType":"geometry.stroke","stylers":[{"color":"#808080"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#454545"}]},{"featureType":"transit","elementType":"labels","stylers":[{"saturation":100},{"lightness":-40},{"invert_lightness":true},{"gamma":1.5},{"color":"#000000"}]},{"featureType":"transit","elementType":"labels.text.fill","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"geometry.stroke","stylers":[{"color":"#fcea1d"}]}];
 
 			var map_options = {
@@ -117,18 +206,18 @@
 				}
 
 			}
-	
-// This is needed to set the zoom after fitbounds, 
-google.maps.event.addListener(member_map, 'zoom_changed', function() {
-  
-            if (this.getZoom() > 15 && this.initialZoom == true) {
-                // Change max/min zoom here
-                this.setZoom(15);
-                this.initialZoom = false;
-            }
 
-});
-		member_map.initialZoom = true;
+			// This is needed to set the zoom after fitbounds,
+			google.maps.event.addListener(member_map, 'zoom_changed', function() {
+
+				if (this.getZoom() > 15 && this.initialZoom == true) {
+					// Change max/min zoom here
+					this.setZoom(15);
+					this.initialZoom = false;
+				}
+
+			});
+			member_map.initialZoom = true;
 			member_map.fitBounds(member_bounds);
 
 
@@ -147,6 +236,49 @@ google.maps.event.addListener(member_map, 'zoom_changed', function() {
 
 
 
+
+function displayEvents(events, events_container, compiled){
+
+
+	var $s_events =  processEvents(events);
+
+	events_container.html(  compiled({ events:   $s_events  })  );
+
+
+	$('#back_to_top').on('click', function(e){
+		e.preventDefault();
+		$("html, body").animate({ scrollTop: 0 }, 500);
+	});
+
+
+}
+
+
+function processEvents(events, date){
+
+	if (date && date != '' ){
+		var events = _.filter(  events ,  function(e) {
+
+			if ( Array.isArray(e.date)) {
+				 return  e.date.indexOf( date ) > -1  ;
+			} else {
+				return  e.date == date ;
+			}
+
+
+		});
+	}
+
+
+
+	var events_array =  _.toArray(events) ;
+
+	// PROCESS ARRAY
+	for (var i = 0; i < events_array.length ; i++) {
+		var event = events_array[i];
+	}
+	return events_array;
+}
 
 
 

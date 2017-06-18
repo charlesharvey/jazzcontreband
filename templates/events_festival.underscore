@@ -1,0 +1,36 @@
+<ul id="events">
+
+<%  _.each(events,function(event,key,list){  %>
+
+
+						<li class="reperage_box stripes">
+							<div class="white">
+
+								<div class="row">
+									<div class="col-sm-5">
+										<div class="event_image" style="background-image:url('https://images.pexels.com/photos/12312/pexels-photo-12312.jpeg?h=350&auto=compress&cs=tinysrgb');"></div>
+									</div>
+									<div class="col-sm-7">
+										<h3><%= event.post_title %></h3>
+										<p><%= event.line_up %></p>
+									</div>
+								</div>
+							</div>
+						</li>
+
+
+
+<% }) %>
+
+
+<%  if ( events.length == 0 ) { %>
+		<li class="reperage_box stripes">
+		<h3>Aucune personne trouvée</h3>
+		</li>
+<% } %>
+
+</ul>
+
+<%  if ( events.length > 5 ) { %>
+<p><a href="#" id="back_to_top">&#8593; Retour en haut</a></p>
+<% } %>

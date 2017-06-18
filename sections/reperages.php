@@ -12,7 +12,7 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 			<div class="col-sm-4 col-sm-push-8">
 
 				<aside>
-					<form method="get">
+					<form method="get" style="margin-bottom:30px;">
 					<label for="search_rep">
 						<h4>Rechercher</h4>
 					</label>
@@ -30,7 +30,7 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 
 			</div>
 			<div class="col-sm-8 col-sm-pull-4">
-				<?php 
+				<?php
 
 			if (isset($rs) && $rs != '' ):
 
