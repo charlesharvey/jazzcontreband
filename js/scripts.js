@@ -87,6 +87,7 @@
 
 
 			var $events_container = $('#events_container');
+			var $show_all_events = $('#show_all_events');
 			var $events_template = $('#events_template').html();
 
 
@@ -107,8 +108,8 @@
 			}).done(function( data ) {
 
 				// ORIGINAL SET OF EVENTS
-				var original_events = data;
-				var events = processEvents(original_events);
+				var events = processEvents(data);
+				var original_events = events;
 
 				var compiled =  _.template($events_template);
 
@@ -128,11 +129,20 @@
 						click: function (target) {
 								var target_date = target.date._i;
 								var processed_events = processEvents(original_events, target_date);
-								displayEvents(processed_events, $events_container, compiled)
+								displayEvents(processed_events, $events_container, compiled);
+
+								$show_all_events.show();
 						}
 
 					}
 				});
+
+				$show_all_events.on('click', function(e){
+					  e.preventDefault();
+						displayEvents(original_events, $events_container, compiled);
+						$show_all_events.hide();
+
+				})
 
 
 

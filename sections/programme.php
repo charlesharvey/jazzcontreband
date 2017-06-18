@@ -24,6 +24,7 @@
 					<div id="events_calendar">
 						<span class="loading glyphicon glyphicon-cog"></span>
 					</div>
+					<a href="#" id="show_all_events">Show all events</a>
 
 
 				</aside>
