@@ -1,4 +1,9 @@
+
+
+
 <ul id="events">
+
+
 
 <%  _.each(events,function(event,key,list){  %>
 

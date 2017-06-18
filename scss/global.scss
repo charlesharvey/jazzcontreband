@@ -184,3 +184,36 @@ img.pleine_largeur {
 	footer a {
 		color: white;
 	}
+
+
+
+
+.loading {
+	animation: spin 1s linear infinite;
+	width:20px;
+	display: inline-block;
+	height: 20px;
+	border:3px solid $primary-color;
+	border-radius: 7px;
+	position: relative;
+	text-align: center;
+	margin: auto;
+	overflow: hidden;
+
+	&:after, &:before {
+		@extend .loading;
+		content:'';
+		opacity: 0.6;
+		position:absolute;
+		top:5px;
+		left: 5px;
+		width: 14px;
+		height: 14px;
+	}
+	&:before {
+		bottom:5px;
+		top:auto;
+		left:auto;
+		right:5px;
+	}
+}

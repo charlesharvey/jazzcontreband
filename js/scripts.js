@@ -95,12 +95,11 @@
 
 			var $calendar_template = $('#calendar_template').html();
 			var $events_calendar = $('#events_calendar');
+			var $events_title = $('#events_title');
 			var now = moment().startOf('month');
 			var start = now.format("YYYY-MM-DD");
 			var end =  now.add(1, 'months').subtract(1, 'day').format("YYYY-MM-DD");
 
-
-			console.log(calendar_api_url);
 
 			$.ajax({
 				url: calendar_api_url,
@@ -131,6 +130,8 @@
 								var processed_events = processEvents(original_events, target_date);
 								displayEvents(processed_events, $events_container, compiled);
 
+								$events_title.html(target_date);
+
 								$show_all_events.show();
 						}
 
@@ -141,6 +142,7 @@
 					  e.preventDefault();
 						displayEvents(original_events, $events_container, compiled);
 						$show_all_events.hide();
+						$events_title.html( $events_title.data('title')   );
 
 				})
 

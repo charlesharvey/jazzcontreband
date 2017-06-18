@@ -4,14 +4,14 @@
 
 	<div class="container">
 
-		<h2 style="text-align:center; margin-bottom:50px">Programme</h2>
+		<h2 id="events_title" data-title="Programme" style="text-align:center; margin-bottom:50px">Programme</h2>
 
 
 		<div class="row">
 			<div class="col-sm-8">
 
 				<div id="events_container">
-					<span class="loading glyphicon glyphicon-cog"></span>
+					<span class="loading"></span> 
 				</div>
 
 
@@ -22,7 +22,7 @@
 				<aside>
 
 					<div id="events_calendar">
-						<span class="loading glyphicon glyphicon-cog"></span>
+						<span class="loading"></span>
 					</div>
 					<a href="#" id="show_all_events">Show all events</a>
 
