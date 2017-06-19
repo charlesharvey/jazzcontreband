@@ -78,7 +78,8 @@ section.section.section_partners {
 .reperage_box {
     list-style: none;
     box-shadow: 0px 0px 16px rgba(0,0,0,0.3);
-    padding: 20px 0 10px;
+    /*padding: 20px 0 10px;*/
+    padding: 20px 0 0px;
     margin-bottom: 30px;
     border-radius: $border-radius;
     font-size: 1em;
@@ -216,6 +217,60 @@ aside {
     }
 }
 
+html body section aside h6 a, aside.calendar_box h6 a  {
+    background: $primary-color !important;
+    font-size: 1em;
+    display: block;
+    color: black!important;
+      &:link, &:active, &:focus {
+        color:black!important;
+    }
+    &:hover{
+        color: white!important;
+    }
+}
+
+
+#events_calendar .clndr .controls, #events_calendar .clndr .days-container .days, #events_calendar .clndr .days-container .days .headers {
+    background-color: black!important;
+    color: white!important;
+
+}
+
+#events_calendar .clndr .days-container .days .day, #events_calendar .clndr .days-container .days .empty {
+    color: white!important;
+    border:0!important;
+}
+
+.clndr {
+    border:solid 1px #bbb;
+}
+
+#events_calendar .clndr .days-container .days .headers {
+    border-top:solid 1px #bbb;
+    border-bottom:solid 1px #bbb;
+}
+
+#events_calendar .clndr .days-container .days .day.event, #events_calendar .clndr .days-container .days .empty.event {
+    background-color: black!important;
+    color: #ffed03!important;
+    border-radius: 50%!important;
+    width: 31px!important;
+    margin: 0 5.78px!important;
+}
+
+#events_calendar .clndr .days-container .days .day.event:hover, #events_calendar .clndr .days-container .days .empty.event:hover {
+    background-color: rgba(252, 234, 29, 0.4)!important;
+
+    color: white!important;
+}
+
+#events li h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    text-transform: capitalize;
+}
+
 button#load-more {
     display: none;
 }
@@ -312,4 +367,19 @@ p.membre_ville {
 
 .single-membre div#member_map_container {
     margin-top: 10px;
+}
+
+
+
+
+/*Slider*/
+
+
+li.slide_photo_background {
+    padding: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 1em;
+    text-align: center;
+    color: white;
 }

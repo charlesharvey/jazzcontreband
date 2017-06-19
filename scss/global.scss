@@ -65,7 +65,7 @@ a {transition: all 0.3s}
 a:link, a:active, a:visited {color: #b08453}
 a:hover {color:#f39e41}
 
-h6 a, #submit_course_form {
+h6 a, #submit_course_form, aside h6 a {
 	border: 2px solid $primary-color;
     border-radius: $border-radius;
     display: inline-block;
@@ -76,6 +76,7 @@ h6 a, #submit_course_form {
     position: relative;
     font-size: 1.8em;
     text-decoration: none;
+    line-height: 150%;
     &:link, &:active, &:focus {
     	color:$primary-color!important;
     }
@@ -85,6 +86,7 @@ h6 a, #submit_course_form {
     }
 
 }
+
 
 #submit_course_form, .white h6 a, .checkers h6 a, .stripes h6 a {background: black; border:none; color: white!important; text-transform: uppercase;font-weight: bold; cursor: pointer;}
 

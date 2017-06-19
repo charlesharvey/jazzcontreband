@@ -403,8 +403,14 @@ function options_page_for_security(){ ?>
         $obj->title = $membre->post_title;
         $obj->id = $membre->ID;
         $obj->url = $membre->guid;
-        $obj->lat = $latlngx[0];
-        $obj->lng = $latlngx[1];
+
+        if(is_array($latlngx) && sizeof($latlngx)==2){
+          $obj->lat = $latlngx[0];
+          $obj->lng = $latlngx[1];
+
+        }
+       
+        
         array_push(  $locations,  $obj);
       endforeach;
 

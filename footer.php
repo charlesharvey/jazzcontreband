@@ -12,13 +12,14 @@
 
 
 		<?php $tdu  =  get_template_directory_uri() ; ?>
-		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/jquery/dist/jquery.min.js"></script>
+		<!-- <script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/jquery/dist/jquery.min.js"></script> -->
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/bxslider-4/dist/jquery.bxslider.min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/matchHeight/dist/jquery.matchHeight-min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/moment/min/moment.min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/clndr/src/clndr.js "></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/js/min/scripts.js"></script>
+		<!-- <script type="text/javascript" src="<?php echo $tdu; ?>/js/scripts.js"></script> -->
 
 		<?php wp_footer(); ?>
 		<script>

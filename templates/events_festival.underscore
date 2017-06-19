@@ -3,11 +3,14 @@
 
 <ul id="events">
 
-
-
 <%  _.each(events,function(event,key,list){  %>
 
+<% if(event.date_title){  %>
+	<li>
+		<h2><%= event.date_title %></h2>
+	</li>
 
+<% } %>
 						<li class="reperage_box stripes">
 							<div class="white">
 
@@ -22,8 +25,6 @@
 								</div>
 							</div>
 						</li>
-
-
 
 <% }) %>
 
