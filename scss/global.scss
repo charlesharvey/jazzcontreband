@@ -46,6 +46,8 @@ dd {
 	margin: 0 0 15px;
 }
 
+iframe {width: 100%!important; height: 300px;}
+
 
 
 @media (min-width: 1200px){
@@ -62,8 +64,8 @@ dd {
 
 
 a {transition: all 0.3s}
-a:link, a:active, a:visited {color: #b08453}
-a:hover {color:#f39e41}
+a:link, a:active, a:visited {color: black;}
+a:hover {color:#ffed00;}
 
 h6 a, #submit_course_form, aside h6 a {
 	border: 2px solid $primary-color;
@@ -88,7 +90,7 @@ h6 a, #submit_course_form, aside h6 a {
 }
 
 
-#submit_course_form, .white h6 a, .checkers h6 a, .stripes h6 a {background: black; border:none; color: white!important; text-transform: uppercase;font-weight: bold; cursor: pointer;}
+#submit_course_form, .white h6 a, .checkers h6 a, .stripes h6 a, .white h6 a  {background: black; border:none; color: white!important; text-transform: uppercase;font-weight: bold; cursor: pointer;}
 
 p + h6 a {margin-top: -10px;}
 
@@ -145,20 +147,6 @@ img.pleine_largeur {
 
 
 
-
-	/*MEMBERS MAP*/
-	#member_map_container {
-		height: 400px;
-		width:100%;
-		background: #f1f1f1;
-	}
-	#member_map_container.small_map {
-		height: 200px;
-	}
-	.member_image img {
-		width: 100%;
-		height: auto;
-	}
 
 
 

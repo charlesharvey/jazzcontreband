@@ -1,52 +1,48 @@
-
-
-<div class="white" id="programme_container">
-
-	<div class="container">
-
-		<!-- <h2 id="events_title" data-title="Programme" style="text-align:center; margin-bottom:50px">Programme</h2> -->
-
+<div class="black">
+	<div class="container"  style="text-align: center;">
+	<h2><a href ="<?php echo get_sub_field('link'); ?>">Prochainement</a></h2>
+	<p class="seeall"><a href ="<?php echo get_sub_field('link'); ?>">ou consultez notre programme complet ici</a></p>
 
 		<div class="row">
-			<div class="col-sm-8">
+			<?php 
+				$event_type = get_sub_field('event_type');
+				$args = array( 'post_type' => $event_type, 'posts_per_page' => 3 );
+				$loop = new WP_Query( $args );
+				while ( $loop->have_posts() ) : $loop->the_post();
+			?>
 
-				<div id="events_container">
-					<span class="loading"></span>
-				</div>
-
-
-			</div>
 			<div class="col-sm-4">
-
-
-				<aside style="padding: 15px 30px 35px; text-align: center;">
-
-				<h4>Rechercher</h4>
-
-					<div id="events_calendar">
-						<span class="loading"></span>
+			<a href="<?php the_permalink(); ?>">
+				<div class="reperage_box stripes upcoming">
+					<div class="white">
+					<div class="event_thumb" style="padding: 30%; background-image:url(<?php echo get_the_post_thumbnail_url(); ?>); background-size:cover;"></div>
+						<div class="upcoming_description">
+							 <h3><?php the_title(); ?></h3>
+							 <br>
+							 <div class="event_date">
+								<?php $id = get_the_ID(); ?>
+								<?php $numrows = count(get_field( 'dates' ) );?>
+								<?php $i=1; ?>
+								<?php while ( have_rows('dates', $id) ) : the_row() ; ?>
+									<?php if($i == $numrows ){
+												echo get_sub_field('date'); 
+											} else {
+												$pieces = explode(" ",  get_sub_field('date'));
+												echo $pieces['0'] . ' - ';
+												} ?>
+									<?php $i++; ?>
+								<?php endwhile; ?>
+							</div>
+						</div>
 					</div>
-					<div class="clear"></div>
-					<h6  id="show_all_events"><a href="#">Tout le programme</a></h6>
-
-
-				</aside>
-
-
+				</div>
+			</a>
 			</div>
+
+			<?php endwhile; ?>
+			<?php wp_reset_query(); ?>
 		</div>
+
+		
 	</div>
 </div>
-
-<?php $event_type = get_sub_field('event_type'); ?>
-<script type="text/javascript">
-	var calendar_api_url = '<?php echo home_url(); ?>/api/v1/?<?php echo ($event_type); ?>=true';
-</script>
-
-
-<script id="calendar_template" type="x-underscore">
-<?php echo file_get_contents( get_stylesheet_directory() . '/templates/calendar.underscore'); ?>
-</script>
-<script id="events_template" type="x-underscore">
-<?php echo file_get_contents( get_stylesheet_directory() . '/templates/events_festival.underscore'); ?>
-</script>

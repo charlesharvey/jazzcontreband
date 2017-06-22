@@ -264,9 +264,9 @@ function displayEvents(events, events_container, compiled){
 	events_container.html(  compiled({ events:   $s_events  })  );
 
 
-	$('#back_to_top').on('click', function(e){
+	jQuery('#back_to_top').on('click', function(e){
 		e.preventDefault();
-		$("html, body").animate({ scrollTop: 0 }, 500);
+		jQuery("html, body").animate({ scrollTop: 0 }, 500);
 	});
 
 

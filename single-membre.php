@@ -37,6 +37,9 @@
 <div class="container-fluid section2col">
 	<div class="row">
 		<div class="sectioncol col-sm-6 stripes colnmb1 nexttomap" style="height: 1049px;">
+		<div class="title">
+			<h2><strong>Contact</strong></h2>
+		</div>
 			<div class="content membres_details">
 
 			<?php if (get_field('website')){ ?>
@@ -56,7 +59,7 @@
 			
 			</div>
 		</div>
-		<div class="sectioncol col-sm-6 colnmb2">
+		<div class="sectioncol col-sm-6 colnmb2 map_half_section">
 			<?php echo do_shortcode('[jazz_membres_map]'); ?>
 		</div>
 	</div> <!-- END OF ROW -->

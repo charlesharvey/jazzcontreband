@@ -10,7 +10,8 @@
 		<h2><%= event.date_title %></h2>
 	</li>
 
-<% } %>
+<% } %>					
+					<a href = " <%= event.guid %>">
 						<li class="reperage_box stripes">
 							<div class="white">
 
@@ -20,18 +21,24 @@
 									</div>
 									<div class="col-sm-7">
 										<h3><%= event.post_title %></h3>
-										<p><%= event.nice_date %></p>
+										<div class="prog_evnt_details">
+											<% if(event.nice_date){  %><p><i class="fa fa-calendar" aria-hidden="true"></i>  <%= event.nice_date %></p><% } %>
+											<% if(event.time){  %><p><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= event.time %></p><% } %>
+											<% if(event.member){  %><p><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= event.member.post_title %></p><% } %>
+											<% if(event.styles){  %><p><i class="fa fa-tags" aria-hidden="true"></i>  <%= event.styles %></p><% } %>
+										</div>
 									</div>
 								</div>
 							</div>
 						</li>
+					</a>
 
 <% }) %>
 
 
 <%  if ( events.length == 0 ) { %>
 		<li class="reperage_box stripes">
-		<h3>Aucune personne trouvée</h3>
+		<h3>Aucun évènement trouvé</h3>
 		</li>
 <% } %>
 

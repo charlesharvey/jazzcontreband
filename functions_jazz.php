@@ -386,9 +386,16 @@ function options_page_for_security(){ ?>
 
       if (is_singular('membre')) { // only show the one member, if on their own page
         global $post;
-        $membre_id =  $post->ID;
+        $membre_id =  get_field('members', $post->ID);
         $membres = get_posts( array('post_type' => 'membre', 'include' => $membre_id, 'posts_per_page'=> 1  ) );
         $classes = 'small_map';
+      }elseif (is_singular('evenement_festival') OR is_singular('evenement_saison')) {
+        global $post;
+        $event_id =  $post->ID;
+         $membre_id =  get_field('members', $event_id);
+         $membre_id -> ID;
+         $membres = get_posts( array('post_type' => 'membre', 'include' => $membre_id->ID, 'posts_per_page'=> 1  ) );
+         $classes = 'small_map';
       } else { // else show all the members
         $membres = get_posts( array('post_type' => 'membre', 'posts_per_page'=> -1  ) );
         $classes = 'big_map';
@@ -424,7 +431,7 @@ function options_page_for_security(){ ?>
       $str = '<ul class="members">';
       foreach ($members as $member) {
 
-        $str .= '<li>'. $member->post_title .'</li>';
+        // $str .= '<li>'. $member->post_title .'</li>';
 
       }
 
