@@ -21,27 +21,28 @@
 				$i = 1;
 					foreach( $styles as $style ):
 						if($i==1) { echo '<i class="fa fa-tags" aria-hidden="true"></i> ';}
-						else {echo ' - '; } 
+						else {echo ' - '; }
 						 echo $style;
+						$i++;
 					endforeach; ?>
-					
+
 			</p><br><?php } ?>
 			<?php $id = get_the_ID(); ?>
 			<?php if(have_rows('dates', $id)){?>
-			<p class="event_info"> 
-				<?php echo $numrows = count(get_field( 'dates' ) );?>
+			<p class="event_info">
+				<?php $numrows = count(get_field( 'dates' ) );?>
 				<?php if($numrows != 0){?><span><i class="fa fa-calendar" aria-hidden="true"></i> <?php } ?>
 				<?php $i=1; ?>
 				<?php while ( have_rows('dates', $id) ) : the_row() ; ?>
 					<?php if($i == $numrows ){
-						echo get_sub_field('date'); 
+						echo get_sub_field('date');
 					} else {
 						$pieces = explode(" ",  get_sub_field('date'));
 						echo $pieces['0'] . ' - ';
 					} ?>
 					<?php $i++; ?>
 				<?php endwhile; ?>
-				</span> | 
+				</span> |
 				<?php if (get_field('time')){?><span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo get_field('time'); ?></span> | <?php } ?>
 				<?php if (!empty($members)){?><span><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $members->post_title; ?> - <?php echo get_field('ville', $members->ID); ?></span><?php } ?>
 			</p>
@@ -56,12 +57,12 @@
 		<div class="row">
 			<div class="sectioncol col-sm-6 colnmb1 white ">
 				<div class="content event_membres_details">
-					<h2> <?php the_title(); ?><?php if(get_field('artist_name')){ ?> - <?php echo get_field('artist_name'); ?></h2><br><?php } ?>
+					<h2> <?php the_title(); ?><?php if(get_field('artist_name')){ ?> - <?php echo get_field('artist_name'); ?><br><?php } ?></h2>
 					<?php if(get_field('countries')){ ?><p class="event_countries"> <i class="fa fa-globe" aria-hidden="true"></i>  <?php echo get_field('countries'); ?></p><?php } ?>
 					<?php echo get_field('description') ?>
 					<?php if(get_field('line-up')){?><div class="line-up"><p>Line-up: </p><?php echo get_field('line-up');?></div><?php } ?>
 					<?php if(get_field('website')){?><div class="website"><p><a class="event_website" href="<?php echo get_field('website'); ?>" target="_blank" ><i class="fa fa-link" aria-hidden="true"></i>  <?php echo get_field('website');?></a></p></div><?php } ?>
-				
+
 				</div>
 			</div>
 			<div class="sectioncol col-sm-6 colnmb2 white event_featured_image">
@@ -83,7 +84,7 @@
 					<?php echo get_field('description_minor') ;?>
 					<?php if(get_field('line-up_minor')){?><div class="line-up"><p>Line-up: </p><?php echo get_field('line-up_minor');?></div><?php } ?>
 					<?php if(get_field('website_minor')){?><div class="website"><p><a class="event_website" href="<?php echo get_field('website_minor'); ?>" target="_blank" ><i class="fa fa-link" aria-hidden="true"></i>  <?php echo get_field('website_minor');?></a></p></div><?php } ?>
-				
+
 				</div>
 			</div>
 			<div class="sectioncol col-sm-6 colnmb2 black event_featured_image">
@@ -97,7 +98,7 @@
 
 <section class="section  section_colonnes ">
 
-		
+
 
 <div class="container-fluid section2col">
 	<div class="row">
@@ -128,7 +129,7 @@
 					<a class="event_website" href ="<?php echo get_field('ticketing_link');?>" target ="_blank"><i class="fa fa-ticket" aria-hidden="true"></i>  Acheter vos tickets en ligne</a>
 				</p>
 			<?php } ?>
-			
+
 			</div>
 		</div>
 		<div class="sectioncol col-sm-6 colnmb2 map_half_section">

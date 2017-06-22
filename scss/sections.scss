@@ -490,7 +490,7 @@ a.event_website {
     margin-top: 10px;
     &:link, &:active, &:focus{
         color:black;
-    } 
+    }
 }
 
 p.event_countries {
@@ -521,5 +521,4 @@ p.event_countries {
 }
 
 
-.map_half_section {padding: 0;}
-
+.map_half_section {padding: 10px 0 0 0;}
