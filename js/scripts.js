@@ -268,47 +268,41 @@ function displayEvents(events, events_container, compiled){
 
 function processEvents(events, date){
 
-	if (date && date != '' ){
-		var events = _.filter(  events ,  function(e) {
+		if (date && date != '' ){
+			var events = _.filter(  events ,  function(e) {
 
-			if ( Array.isArray(e.date)) {
-				 return  e.date.indexOf( date ) > -1  ;
-			} else {
-				return  e.date == date ;
-			}
-
-
-		});
-	}
+				if ( Array.isArray(e.date)) {
+					 return  e.date.indexOf( date ) > -1  ;
+				} else {
+					return  e.date == date ;
+				}
+			});
+		}
 
 
-
-	var events_array =  _.toArray(events) ;
-
-
-var $prev_date = false;
-	// PROCESS ARRAY
-	for (var i = 0; i < events_array.length ; i++) {
-		var event = events_array[i];
-
-			if (typeof event['startDate'] != 'undefined' ) {
-				event['nice_date']   =   moment(event['startDate']).format("dddd D ") + ' - ' + moment(event['endDate']).format("dddd D MMMM ");
-			} else {
-				event['nice_date']   = moment(event['date']).format("dddd D MMMM ");
-			}
-
-			if(event['nice_date'] != $prev_date) {
-				$prev_date = event['nice_date'];
-				event['date_title'] =  event['nice_date'];
-			} else {
-				event['date_title'] = false;
-			}
-
-		
+	var sorted_events = _.sortBy(events, function(e) { return e.searchDate; }); 
+	var events_array =  _.toArray(sorted_events) ;
 
 
+	var $prev_date = false;
+		// PROCESS ARRAY
+		for (var i = 0; i < events_array.length ; i++) {
+			var event = events_array[i];
 
-	}
+				if (typeof event['startDate'] != 'undefined' ) {
+					event['nice_date']   =   moment(event['startDate']).format("dddd D ") + ' - ' + moment(event['endDate']).format("dddd D MMMM ");
+				} else {
+					event['nice_date']   = moment(event['date']).format("dddd D MMMM ");
+				}
+
+				if(event['nice_date'] != $prev_date) {
+					$prev_date = event['nice_date'];
+					event['date_title'] =  event['nice_date'];
+				} else {
+					event['date_title'] = false;
+				}
+		};
+
 	return events_array;
 }
 
@@ -350,7 +344,7 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 		markers.push(marker);
 
 		bounds.extend(latlng);
-	
+
 	}
 
 };

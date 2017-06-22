@@ -393,7 +393,6 @@ function options_page_for_security(){ ?>
         global $post;
         $event_id =  $post->ID;
          $membre_id =  get_field('members', $event_id);
-         var_dump($membre_id);
          //$membre_id -> ID;
          $membres = get_posts( array('post_type' => 'membre', 'include' => $membre_id->ID, 'posts_per_page'=> 1  ) );
          $classes = 'small_map';
@@ -420,8 +419,8 @@ function options_page_for_security(){ ?>
           $obj->lng = $latlngx[1];
 
         }
-       
-        
+
+
         array_push(  $locations,  $obj);
       endforeach;
 
