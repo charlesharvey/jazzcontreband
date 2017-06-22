@@ -13,7 +13,7 @@
 
 		<?php $tdu  =  get_template_directory_uri() ; ?>
 		<!-- <script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/jquery/dist/jquery.min.js"></script> -->
-		<script type='text/javascript' src='http://localhost:8888/jazzcontreband/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+		<script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/bxslider-4/dist/jquery.bxslider.min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/matchHeight/dist/jquery.matchHeight-min.js"></script>

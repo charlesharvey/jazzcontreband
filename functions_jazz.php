@@ -217,9 +217,9 @@ function jazz_shortcode_login($atts, $content = null) // Demo Heading H2 shortco
   $ret = '';
 
   if (isset( $_GET['login_failed'] )) {
-    $ret .=	'<p style="background:red;color:white;padding:20px;margin:0 0 20px;">Log in failed. Please try again.</p>';
-  } elseif 	(  isset( $_GET['access_denied'] )  ) {
-    $ret .=	'<p style="background:red;color:white;padding:20px;margin:0 0 20px;">You are NOT allowed here. Please log in</p>';
+    $ret .= '<p style="background:red;color:white;padding:20px;margin:0 0 20px;">Log in failed. Please try again.</p>';
+  } elseif  (  isset( $_GET['access_denied'] )  ) {
+    $ret .= '<p style="background:red;color:white;padding:20px;margin:0 0 20px;">You are NOT allowed here. Please log in</p>';
   };
 
 
@@ -386,14 +386,15 @@ function options_page_for_security(){ ?>
 
       if (is_singular('membre')) { // only show the one member, if on their own page
         global $post;
-        $membre_id =  get_field('members', $post->ID);
-        $membres = get_posts( array('post_type' => 'membre', 'include' => $membre_id, 'posts_per_page'=> 1  ) );
+
+        $membres = get_posts( array('post_type' => 'membre', 'include' => $post->ID, 'posts_per_page'=> 1  ) );
         $classes = 'small_map';
-      }elseif (is_singular('evenement_festival') OR is_singular('evenement_saison')) {
+      } elseif (is_singular('evenement_festival') OR is_singular('evenement_saison')) {
         global $post;
         $event_id =  $post->ID;
          $membre_id =  get_field('members', $event_id);
-         $membre_id -> ID;
+         var_dump($membre_id);
+         //$membre_id -> ID;
          $membres = get_posts( array('post_type' => 'membre', 'include' => $membre_id->ID, 'posts_per_page'=> 1  ) );
          $classes = 'small_map';
       } else { // else show all the members
@@ -403,6 +404,8 @@ function options_page_for_security(){ ?>
 
       $locations = [];
 
+
+
       foreach ($membres as $membre ) :
         $latlng = get_field('latlng', $membre->ID );
         $latlngx = explode( ',', $latlng   );
@@ -410,6 +413,7 @@ function options_page_for_security(){ ?>
         $obj->title = $membre->post_title;
         $obj->id = $membre->ID;
         $obj->url = $membre->guid;
+        $obj->blah = $latlng;
 
         if(is_array($latlngx) && sizeof($latlngx)==2){
           $obj->lat = $latlngx[0];
