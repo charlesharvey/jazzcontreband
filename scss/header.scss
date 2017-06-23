@@ -43,6 +43,7 @@ header {
 				display: inline-block;
 				padding: 0;
 				margin: 0;
+				position: relative;
 
 				a {
 					color: $black;
@@ -60,6 +61,37 @@ header {
 						border-bottom: 2px solid #000;
 					}
 				}
+				ul {
+					display: none;
+				}
+			}
+
+			li.menu-item-has-children:hover {
+			    background: rgba(0,0,0,0.8);
+					a {
+						color: white;
+						&:hover{
+							border-bottom: solid 2px rgba(0,0,0,0);
+						}
+					}
+					ul {
+						background: rgba(0,0,0,0.5);
+						display: block;
+						position: absolute;
+						padding: 0;
+						width: 250px;
+						right: 0;
+							li {
+								border-top: solid 1px;
+								&:hover{
+									background: rgba(0,0,0,0.5);
+								}
+								a:hover {
+									border-bottom: solid 2px rgba(0,0,0,0);
+								}
+							}
+						}
+				}
 			}
 		}
 	}
@@ -75,7 +107,7 @@ header {
 		right: 0;
 		z-index: 4;
 		opacity: .4;
-	}
+
 }
 
 

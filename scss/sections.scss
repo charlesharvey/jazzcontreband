@@ -543,3 +543,21 @@ p.event_countries {
 
 
 .map_half_section {padding: 10px 0 0 0;}
+
+
+// Gallery
+
+.img_gallery.justified-gallery {
+    margin-bottom: -30px;
+}
+
+
+body .justified-gallery>.entry-visible>img, body .justified-gallery>.entry-visible>a>img {
+	filter: grayscale(100%);
+	transition: filter 500ms, transform 500ms;
+}
+
+body .justified-gallery>.entry-visible>img:hover, body .justified-gallery>.entry-visible>a>img:hover {
+	filter: grayscale(0%);
+	transform: scale(1.1);
+}

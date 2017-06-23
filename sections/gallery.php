@@ -1,6 +1,3 @@
-<?php while ( have_rows('album') ) : the_row() ; ?>
-
-
 <?php $images =  get_sub_field('images'); ?>
 
 <?php if ($images) : ?>
@@ -16,5 +13,3 @@
 	<br>
 <?php endif; ?>
 <div class="clear"></div>
-
-	<?php endwhile; ?>
