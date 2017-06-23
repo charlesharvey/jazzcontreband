@@ -13,7 +13,7 @@
 
 
 
-	<section class="section  image_section" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>)">
+	<section class="section  image_section" style="background-image: url(<?php if(has_post_thumbnail()){echo get_the_post_thumbnail_url(); } else {echo get_template_directory_uri() . '/img/placeholder.jpg';} ?>)">
 		<div class="content_image_section">
 			<h1> <?php the_title(); ?></h1><br>
 			<?php if(get_field('styles')){ ?><p class="event_styles">
@@ -107,7 +107,9 @@
 				<h2><strong>Tarifs</strong></h2>
 			</div>
 			<div class="content">
-			<?php if(!get_field('tarifs_reduits') AND !get_field('tarif_passe-partout_jcb')) { ?>
+			<?php
+			if(!get_field('tarif_plein')) {echo "<p>Pas encore défini</p>";}
+			elseif(!get_field('tarifs_reduits') AND !get_field('tarif_passe-partout_jcb')) { ?>
 				<p><?php echo get_field('tarif_plein');?></p>
 			<?php } else { ?>
 			<div class=" pricing">

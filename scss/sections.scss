@@ -98,16 +98,32 @@ section.section.section_partners {
     text-transform: uppercase;
     font-weight: bold;
     float: left;
-    width: calc(100% - 120px);
+    width: calc(100% - 136px);
     padding-bottom: 0;
 }
 
 .links {
     float: right;
-    width: 120px;
+    width: 136px;
     text-align: right;
 }
 
+.flag {
+    height: 32px;
+    display: inline;
+    width: 32px;
+    position: relative;
+}
+
+.suisse_flag {
+    background-image: url(../img/suisse.jpg)!important;
+    background-size: auto 100%!important;
+}
+
+.france_flag {
+    background-image: url(../img/france.jpg)!important;
+    background-size: 100% 100%!important;
+}
 
 .links a, a.edit_link, .membres_details i{
     font-size: 1.8em;
@@ -118,6 +134,7 @@ section.section.section_partners {
     border-radius: 7px;
     &:active, &:focus, &:visited, &:link {color:white;}
     &:hover {color: $primary-color;}
+		vertical-align: top;
 }
 
 a.edit_link {
@@ -410,6 +427,8 @@ li.slide_photo_background {
     position: absolute;
     bottom: 60px;
     text-align: left;
+		left:35px;
+		right: 50px;
 }
 .reperage_box.stripes.upcoming h3 {
     width: auto;
@@ -422,6 +441,8 @@ li.slide_photo_background {
     display: inline-block;
     margin-bottom: 10px;
 }
+
+.upcoming_description h3 {text-align: left!important;}
 
 .event_date {
     background: rgba(255,255,255,0.8);

@@ -10,7 +10,7 @@
 		<h2><%= event.date_title %></h2>
 	</li>
 
-<% } %>					
+<% } %>
 					<a href = " <%= event.guid %>">
 						<li class="reperage_box stripes">
 							<div class="white">

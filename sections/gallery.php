@@ -1,15 +1,20 @@
+<?php while ( have_rows('album') ) : the_row() ; ?>
+
+
 <?php $images =  get_sub_field('images'); ?>
 
+<?php if ($images) : ?>
 
 
-<ul class="gallery_images clearfix">
-	<?php  foreach ($images as $image) : ?>
-	<li  class="gallery_image"> 
-		<a class="gallery"  href="<?php echo $image['sizes']['large']; ?>"><img src="<?php echo $image['sizes']['thumbnail']; ?>"  alt="" /></a>
-	</li>
-	<?php endforeach; ?>
-</ul>
+	<br>
+	<div class="img_gallery ">
+		<?php foreach($images as $image): ?>
+			<a class="gallery" href="<?php echo ($image['url']); ?>"><img src="<?php echo ($image['url']); ?>" alt="" /></a>
+		<?php endforeach; ?>
+	</div>
+	<br>
+	<br>
+<?php endif; ?>
+<div class="clear"></div>
 
-<!-- 
-<div class="container">
-</div> -->
+	<?php endwhile; ?>

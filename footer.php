@@ -19,6 +19,9 @@
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/matchHeight/dist/jquery.matchHeight-min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/moment/min/moment.min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/bower_components/clndr/src/clndr.js "></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/min/featherlight.min.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/min/featherlight.gallery.min.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/min/jquery.justifiedGallery.min.js"></script>
 		<script type="text/javascript" src="<?php echo $tdu; ?>/js/scripts.js"></script>
 		<!-- <script type="text/javascript" src="<?php echo $tdu; ?>/js/scripts.js"></script> -->
 

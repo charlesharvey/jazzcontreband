@@ -1,23 +1,22 @@
 <div class="black">
-	<div class="container"  style="text-align: center;">
-	<h2><a href ="<?php echo get_sub_field('link'); ?>">Prochainement</a></h2>
-	<p class="seeall"><a href ="<?php echo get_sub_field('link'); ?>">ou consultez notre programme complet ici</a></p>
-
+	<div class="container-fluid">
+	<h2 style="background: white; display: inline-block; padding: 0 20px; color: black; margin: 0 0 20px;">Au programme</h2><br><br> 
 		<div class="row">
 			<?php
+			 $id = get_the_ID();
 				$event_type = get_sub_field('event_type');
 				$today = date("Ymd");
 				$args = array(
-					'post_type' => $event_type,
-					'posts_per_page' => 3,
+					'post_type' => 'evenement_festival',
+					'posts_per_page' => -1,
 					'meta_key'   => 'dates_0_date',
 					'orderby'    => 'meta_value_num',
 					'order'      => 'ASC',
 					'meta_query' => array(
 						array(
-							'key'     => 'dates_0_date',
-							'value'   => $today,
-							'compare' => '>=',
+							'key'     => 'members',
+							'value'   => $id,
+							'compare' => '=',
 						)
 					)
 			);

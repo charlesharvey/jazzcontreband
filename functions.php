@@ -129,6 +129,13 @@ function webfactor_styles()
 
     wp_register_style('wf_style', get_template_directory_uri() . '/css/global.css', array(), wf_version(),  'all');
     wp_enqueue_style('wf_style'); // Enqueue it!
+
+    wp_register_style('featherlight', get_template_directory_uri() . '/css/featherlight.min.css', array(), '1.0', 'all');
+     wp_enqueue_style('featherlight'); // Enqueue it!
+     wp_register_style('featherlight-gallery', get_template_directory_uri() . '/css/featherlight.gallery.min.css', array(), '1.0', 'all');
+     wp_enqueue_style('featherlight-gallery'); // Enqueue it!
+     wp_register_style('justifiedGallery', get_template_directory_uri() . '/css/justifiedGallery.min.css', array(), '1.0', 'all');
+     wp_enqueue_style('justifiedGallery'); // Enqueue it!
 }
 
 // Register webfactor  Navigation

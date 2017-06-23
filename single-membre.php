@@ -27,12 +27,13 @@
 				</div><!--  END OF CONTAINER -->
 			</section>
 
+<?php include('events-salle.php'); ?>
 
 
 
 <section class="section  section_colonnes ">
 
-		
+
 
 <div class="container-fluid section2col">
 	<div class="row">
@@ -56,7 +57,7 @@
 				<h4><i class="fa fa-map-marker" aria-hidden="true"></i> Adresse</h4>
 				<p><?php echo get_field('address'); ?><br><?php echo get_field('country'); ?></p>
 			<?php } ?>
-			
+
 			</div>
 		</div>
 		<div class="sectioncol col-sm-6 colnmb2 map_half_section">
