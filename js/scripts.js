@@ -3,7 +3,7 @@
 	$(function () {
 
 		'use strict';
-		
+
 		$(".img_gallery").justifiedGallery({
 			 rowHeight : 150,
 			 margins: 4,
@@ -95,7 +95,10 @@
 			pager:!1
 		});
 
-
+		if (typeof scroll_to_reperage_form != 'undefined'){
+				var $reperages = $('#reperages');
+				$("html, body").animate({ scrollTop   :  $reperages.offset().top }, 500);
+		}
 
 
 		// CALENDAR
@@ -314,7 +317,7 @@ function processEvents(events, date){
 				}
 
 if(!event['thumbnail']){
-	event['thumbnail'] = "http://webfactor.ch/projets/jazzcontreband/wp-content/themes/jazzcontreband/img/placeholder.jpg";
+	event['thumbnail'] = "https://webfactor.ch/projets/jazzcontreband/wp-content/themes/jazzcontreband/img/placeholder.jpg";
 }
 
 		};

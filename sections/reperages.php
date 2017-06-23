@@ -2,6 +2,7 @@
 
 $rs = ( isset($_GET['search'])) ? $_GET['search'] : false;
 $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
+$rc = ( isset($_GET['country'])) ? $_GET['country'] : false;
 
 ?>
 
@@ -17,6 +18,9 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 						<h4>Rechercher</h4>
 					</label>
 					<input type="text" id="search_rep" name="search" value="<?php echo $rs; ?>" />
+
+					<a href="?country=France" class="country_search">Francais</a>
+					<a href="?country=Suisse" class="country_search">Suisse</a>
 					</form>
 					<a href="?#reperages">> Tous les repérages</a>
 
@@ -47,6 +51,10 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 					$meta_chars =  implode($meta_chars, ':');
 					echo do_shortcode('[ajax_load_more post_type="reperage" meta_key="'. $meta_keys .'" meta_value="'. $meta_values.'" meta_compare="'. $meta_compares.'" meta_type="'. $meta_chars.'" meta_relation="OR"   ]');
 
+			elseif (isset($rc) && $rc != '' ):
+
+						echo do_shortcode('[ajax_load_more post_type="reperage" meta_key="country" meta_value="' . $rc . '" ]');
+
 			elseif (isset($ru) && $ru != '' ):
 
 				echo do_shortcode('[ajax_load_more post_type="reperage" author="' . $ru . '" ]');
@@ -62,3 +70,9 @@ $ru = ( isset($_GET['auteur'])) ? $_GET['auteur'] : false;
 		</div>
 	</div>
 </div>
+
+<?php if ($rs || $ru || $rc) : ?>
+<script>
+	var scroll_to_reperage_form = true;
+</script>
+<?php endif; ?>
