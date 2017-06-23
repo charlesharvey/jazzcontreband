@@ -6,6 +6,9 @@
 add_action( 'admin_post_nopriv_reperage_form',    'get_email_from_reperage_form'   );
 add_action( 'admin_post_reperage_form',  'get_email_from_reperage_form' );
 
+add_action( 'admin_post_nopriv_delete_reperage_form',    'delete_reperage_from_form'   );
+add_action( 'admin_post_delete_reperage_form',  'delete_reperage_from_form' );
+
 
 function reperage_fields(){
   return [
@@ -54,6 +57,25 @@ function reperage_form_shortcode($atts , $content = null) {
   $rp_frm = '';
 
 
+
+  // CONFIRM  TO DELETE REPERAGE
+  if (isset($_GET['delete_reperage'])) {
+    $rp_frm .= ' <form  id="delete_course_form" action="' .  esc_url( admin_url('admin-post.php') ) . '" method="post">';
+    $rp_frm .= '<p>Êtes-vous sûr de vouloir supprimer ce repérage?</p>';
+    $rp_frm .= '<input type="hidden" name="reperage_id" value="'. $reperage_id  .'">';
+    $rp_frm .= '<input type="hidden" name="action" value="delete_reperage_form">';
+    $rp_frm .= '<input type="submit" id="submit_delete_course_form" value="Suprimer">';
+    $rp_frm .= '</form>';
+  };
+
+  // MESSAGE TO SAY DELETE WAS SUCCESFUL
+  if (isset($_GET['supprime'])) {
+    $rp_frm .= '<div class="container"> <div class="col-sm-12 black" style="padding: 25px 35px 25px;     text-align: center;     margin-bottom: 30px;">';
+    $rp_frm .= ' <h2>Le repérage a bien été supprimé</h2>';
+    $rp_frm .= '</div></div>';
+  };
+
+
   if ($reperage) {
     $rp_frm .= '<div class="container"> <div class="col-sm-12 black" style="padding: 25px 35px 25px;     text-align: center;     margin-bottom: 30px;">';
     $rp_frm .= ' <h2>Modifier le repérage: <strong>' .  $reperage->post_title   .'</strong></h2>';
@@ -82,8 +104,8 @@ $rp_frm .= '<div class="container ">';
       $rp_frm .=  make_reperage_field('numbre', 'Nombre de musiciens',  $reperage_id, 'input');
     $rp_frm .= '</div>';
 
-  $rp_frm .= '</div>';  
-  $rp_frm .= '</div>';  
+  $rp_frm .= '</div>';
+  $rp_frm .= '</div>';
 
   $rp_frm .= '<div class="reperage_box stripes">';
   $rp_frm .= '<div class="row white">';
@@ -91,16 +113,16 @@ $rp_frm .= '<div class="container ">';
 
     $rp_frm .= '<div class="col-sm-4">';
       $rp_frm .=  make_reperage_field('lien_1', 'Lien (site web, youtube ou autre)',  $reperage_id, 'input');
-    $rp_frm .= '</div>'; 
-    $rp_frm .= '<div class="col-sm-4">'; 
+    $rp_frm .= '</div>';
+    $rp_frm .= '<div class="col-sm-4">';
       $rp_frm .=  make_reperage_field('lien_2', 'Lien 2',  $reperage_id, 'input');
-      $rp_frm .= '</div>'; 
-    $rp_frm .= '<div class="col-sm-4">'; 
+      $rp_frm .= '</div>';
+    $rp_frm .= '<div class="col-sm-4">';
       $rp_frm .=  make_reperage_field('lien_3', 'Lien 3',  $reperage_id, 'input');
-    $rp_frm .= '</div>';  
+    $rp_frm .= '</div>';
 
-  $rp_frm .= '</div>';  
-  $rp_frm .= '</div>';  
+  $rp_frm .= '</div>';
+  $rp_frm .= '</div>';
 
   $rp_frm .= '<div class="reperage_box stripes">';
   $rp_frm .= '<div class="row white">';
@@ -142,8 +164,17 @@ $rp_frm .= '</div>';
 
   $rp_frm .= '<input type="hidden" name="reperage_id" value="'. $reperage_id  .'">';
   $rp_frm .= '<input type="hidden" name="action" value="reperage_form">';
-  $rp_frm .= '<input type="submit" id="submit_course_form" value="Envoyer">';
-  $rp_frm .= '</form>';
+
+
+
+
+  $rp_frm .= '<div class="row"><div class="col-sm-9"><input type="submit" id="submit_course_form" value="Envoyer"></div>';
+
+    if ($reperage) :
+      $rp_frm .= '<div class="col-sm-3"><a href="?reperage_id='. $reperage_id .'&delete_reperage=true" class="delete_reperage">Delete</a></div>';
+  endif;
+
+    $rp_frm .= '</div></form>';
 
 
   // HIDDEN ACTION INPUT IS REQUIRED TO POST THE DATA TO THE CORRECT PLACE
@@ -155,6 +186,39 @@ $rp_frm .= '</div>';
 
 
 
+function delete_reperage_from_form(){
+  // IF DATA HAS BEEN POSTED
+  if ( isset($_POST['action'])  && $_POST['action'] == 'delete_reperage_form'   ) {
+
+    $reperage_id = $_POST['reperage_id'];
+    $current_user_id = get_current_user_id();
+
+    // does the reperage already exist and is the current user the owner
+    $reperage_exists = ($reperage_id && $reperage_id != '' && intval($reperage_id) > 0 );
+    if (  $reperage_exists   ) {
+      $reperage = get_post( $reperage_id );
+      if (intval($reperage->post_author) != $current_user_id  ) {
+        wp_redirect(site_url('/reperage-admin?notallowed'), $status = 302);
+        exit;
+      } else {
+
+        // delete the reperage;
+        wp_trash_post( $reperage_id ); //KEEP IN TRASH
+        wp_redirect(site_url('/reperage-admin?supprime'), $status = 302);
+
+      }
+    } else {
+        wp_redirect(site_url('/reperage-admin?notallowed'), $status = 302);
+        exit;
+    }
+
+
+
+
+
+  }; //endof if data posted
+
+}
 
 
 
