@@ -178,6 +178,7 @@ p.added {
     span {
 	    font-size: 1.5em;
 	    margin-right: 15px;
+			display: inline-block;
 	    i {
 		    margin-right: 3px;
 		}
@@ -196,6 +197,31 @@ p.added {
 			position: relative;
 		}
 	}
+}
+
+label.inline_label input {
+    display: inline-block;
+    width: auto;
+    margin: 0 24px 0 12px;
+}
+form#delete_course_form {
+    margin: 0 -24px 20px 16px;
+    padding: 50px;
+    background: #ffed00;
+}
+
+a.delete_reperage {
+    background: #777;
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.8em;
+    padding: 18px;
+    margin-top: 10px;
+    border-radius: $border-radius;
 }
 
 .prog_evnt_details {margin-top: 5px;}
@@ -307,7 +333,7 @@ label {
     margin: 20px 0 5px;
 }
 
-textarea {height: 120px!important;}
+textarea {height: 155px!important;}
 textarea, input {border-color: $black!important;}
 
 
