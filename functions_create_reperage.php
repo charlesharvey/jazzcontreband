@@ -26,10 +26,10 @@ function reperage_fields(){
         'tel_1' => 'Téléphone 1',
         'tel_2' => 'Téléphone 2',
         'email' => 'Email',
-        'adresse' => 'Adresse'
+        'adresse' => 'Adresse',
         // 'postcode' => 'Code postal',
         // 'city' => 'Ville',
-        // 'country' => 'Pays'
+         'country' => 'Pays'
 
      ];
 }
@@ -57,6 +57,13 @@ function reperage_form_shortcode($atts , $content = null) {
   $rp_frm = '';
 
 
+  // MESSAGE TO SAY DELETE WAS SUCCESFUL
+  if (isset($_GET['problem'])) {
+    $rp_frm .= '<div class="container"> <div class="col-sm-12 black" style="padding: 25px 35px 25px;     text-align: center;     margin-bottom: 30px;">';
+    $rp_frm .= ' <p>Une erreur s’est produite en enregistrant ce repérage. Veuillez réessayer. </p>';
+    $rp_frm .= '</div></div>';
+  };
+
 
   // CONFIRM  TO DELETE REPERAGE
   if (isset($_GET['delete_reperage'])) {
@@ -64,7 +71,7 @@ function reperage_form_shortcode($atts , $content = null) {
     $rp_frm .= '<p>Êtes-vous sûr de vouloir supprimer ce repérage?</p>';
     $rp_frm .= '<input type="hidden" name="reperage_id" value="'. $reperage_id  .'">';
     $rp_frm .= '<input type="hidden" name="action" value="delete_reperage_form">';
-    $rp_frm .= '<input type="submit" id="submit_delete_course_form" value="Suprimer">';
+    $rp_frm .= '<input type="submit" id="submit_delete_course_form" value="Supprimer">';
     $rp_frm .= '</form>';
   };
 
@@ -102,6 +109,7 @@ $rp_frm .= '<div class="container ">';
       $rp_frm .=  make_reperage_field('style', 'Style de musique',  $reperage_id, 'input');
       $rp_frm .=  make_reperage_field('origine', 'Origine',  $reperage_id, 'input');
       $rp_frm .=  make_reperage_field('numbre', 'Nombre de musiciens',  $reperage_id, 'input');
+      $rp_frm .=  make_reperage_field('country', 'Pays',  $reperage_id, 'radio', ['France', 'Suisse']  );
     $rp_frm .= '</div>';
 
   $rp_frm .= '</div>';
@@ -171,7 +179,7 @@ $rp_frm .= '</div>';
   $rp_frm .= '<div class="row"><div class="col-sm-9"><input type="submit" id="submit_course_form" value="Envoyer"></div>';
 
     if ($reperage) :
-      $rp_frm .= '<div class="col-sm-3"><a href="?reperage_id='. $reperage_id .'&delete_reperage=true" class="delete_reperage">Delete</a></div>';
+      $rp_frm .= '<div class="col-sm-3"><a href="?reperage_id='. $reperage_id .'&delete_reperage=true" class="delete_reperage">Supprimer</a></div>';
   endif;
 
     $rp_frm .= '</div></form>';
@@ -274,10 +282,13 @@ function get_email_from_reperage_form () {
         // add email to ACF
         //update_field( 'artist_email', $email_of_artist,  $new_reperage  );
 
+        // set default country as suiise if not set
+        if (!isset($_POST['country'])) $_POST['country'] = 'Suisse';
 
         $fields = reperage_fields();
         foreach ($fields as $field => $translation) :
             $$field = $_POST[$field];
+
             if ($$field  != '') :
              update_field( $field, $$field,  $new_reperage  );
             endif;
@@ -364,7 +375,7 @@ function jazz_change_upload_directory( $dirs ) {
 
 //
 
-function make_reperage_field($attribute, $translation,  $reperage_id, $type='input') {
+function make_reperage_field($attribute, $translation,  $reperage_id, $type='input', $choices=[] ) {
 
 
 
@@ -376,11 +387,19 @@ function make_reperage_field($attribute, $translation,  $reperage_id, $type='inp
 
   if ($type == 'textarea') {
 
-
    return '
   <label for="inp_'. $attribute .'">'.  $translation   .'</label>
     <textarea  id="inp_'. $attribute .'"  name="'. $attribute.'"> '. $value .'</textarea>
   ';
+
+} elseif( $type == 'radio') {
+  $str = '';
+  foreach ($choices as $choice) {
+    $selected =  ($choice == $value) ? ' checked ' : '';
+    $str.=   '<label class="inline_label" for="inp_'. $attribute .'">'.  $choice   .'<input '. $selected .' type="radio" name="'. $attribute .'" value="'. $choice.'" /></label>';
+  }
+  return $str;
+
 
   } else {
 
