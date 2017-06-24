@@ -19,7 +19,9 @@
     display: inline-block;
     background: hsla(0,0%,100%,.95);
 }
-
+.title h2 a {
+    text-decoration: none;
+}
 .checkers .content, .stripes .content{
 	padding: 10px 20px;
 	margin: 20px;
@@ -52,6 +54,8 @@ section.section.section_partners {
     padding: 20px 0;
 }
 
+
+.bx-wrapper {margin: auto;}
 #partner_logos {
     text-align: center;
     margin: auto;

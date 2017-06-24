@@ -4,6 +4,31 @@
 
 		'use strict';
 
+		function mobilemenu() {
+			$('#show_mobile_nav').on('click', function(e){
+				e.preventDefault();
+				$('#navigation_menu').toggleClass('visible');
+				$(this).children('svg').toggleClass('white_stripes');
+			});
+
+			$('li.menu-item-has-children>a').on('click', function( event ){
+				if( $(window).width() < 768) {
+					event.preventDefault();
+					$(this).parent('li').children('ul').slideToggle();
+				}
+			})
+		}
+
+		mobilemenu();
+
+		$(window).on('resize', function(){
+			if( $(window).width() >= 768) {
+				$('#navigation_menu').removeClass('visible');
+			}
+		});
+
+
+
 		$(".img_gallery").justifiedGallery({
 			 rowHeight : 150,
 			 margins: 4,

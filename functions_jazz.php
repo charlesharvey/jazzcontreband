@@ -219,7 +219,7 @@ function jazz_shortcode_login($atts, $content = null) // Demo Heading H2 shortco
   if (isset( $_GET['login_failed'] )) {
     $ret .= '<p style="background:red;color:white;padding:20px;margin:0 0 20px;">Log in failed. Please try again.</p>';
   } elseif  (  isset( $_GET['access_denied'] )  ) {
-    $ret .= '<p style="background:red;color:white;padding:20px;margin:0 0 20px;">You are NOT allowed here. Please log in</p>';
+    $ret .= '<p style="background: #fcea1d; color: black; padding: 20px; margin: 80px 0 20px; border: solid 1px;">Veuillez vous connecter pour accéder à cette page.</p>';
   };
 
 

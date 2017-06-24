@@ -8,7 +8,7 @@
 	$partners = get_posts(array('posts_per_page'=> -1, 'post_type' => 'logo')  );
 	foreach ( $partners as $post ) :
 			setup_postdata( $post );
-			$partner_link="";
+			$partner_link=get_field('link');
 			// $partner_link = get_field('lien');
 			$partner_img = thumbnail_of_post_url($post->ID, 'full');
 			 ?>

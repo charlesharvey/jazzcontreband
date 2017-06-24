@@ -1,7 +1,7 @@
 <div class="black">
 	<div class="container"  style="text-align: center;">
 	<h2><a href ="<?php echo get_sub_field('link'); ?>">Prochainement</a></h2>
-	<p class="seeall"><a href ="<?php echo get_sub_field('link'); ?>">ou consultez notre programme complet ici</a></p>
+	<p class="seeall"><a href ="<?php echo get_sub_field('link'); ?>"><?php echo get_sub_field('link_text'); ?></a></p>
 
 		<div class="row">
 			<?php
