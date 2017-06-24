@@ -24,6 +24,7 @@
 		$(window).on('resize', function(){
 			if( $(window).width() >= 768) {
 				$('#navigation_menu').removeClass('visible');
+				$('ul.sub-menu').hide();
 			}
 		});
 
