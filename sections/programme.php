@@ -8,15 +8,8 @@
 
 
 		<div class="row">
-			<div class="col-sm-8">
 
-				<div id="events_container">
-					<span class="loading"></span>
-				</div>
-
-
-			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4 col-sm-push-8">
 
 
 				<aside style="padding: 15px 30px 35px; text-align: center;">
@@ -31,6 +24,14 @@
 
 
 				</aside>
+
+
+			</div>
+			<div class="col-sm-8 col-sm-pull-4">
+
+				<div id="events_container">
+					<span class="loading"></span>
+				</div>
 
 
 			</div>

@@ -14,7 +14,9 @@
 			$('li.menu-item-has-children>a').on('click', function( event ){
 				if( $(window).width() < 768) {
 					event.preventDefault();
-					$(this).parent('li').children('ul').slideToggle();
+					var $sub = $(this).parent('li').children('ul');
+					var $subheight = $sub.outerHeight();
+					$sub.toggleClass('show_sub_menu');
 				}
 			})
 		}
@@ -24,7 +26,8 @@
 		$(window).on('resize', function(){
 			if( $(window).width() >= 768) {
 				$('#navigation_menu').removeClass('visible');
-				$('ul.sub-menu').hide();
+				$('ul.sub-menu').removeClass('show_sub_menu');
+				$('ul.sub-menu').css({'max-height' : 'auto'});
 			}
 		});
 
@@ -362,7 +365,7 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 
 
 		var customMarker = {
-			url: document.location.origin + '/jazzcontreband/wp-content/themes/jazzcontreband/img/marker.svg',
+			url: 'https://webfactor.ch/projets/jazzcontreband/wp-content/themes/jazzcontreband/img/marker.svg',
 			size: new google.maps.Size(20, 20),
 			origin: new google.maps.Point(0, 0),
 			anchor: new google.maps.Point(15, 22)

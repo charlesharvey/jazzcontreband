@@ -7,7 +7,7 @@
 	<div class="row">
 	<?php while ( have_rows('columns') ) : the_row(); ?>
 		<div class="sectioncol <?php echo $column_class . ' ' . get_sub_field('background') . ' colnmb' . $i; ?>">
-			<?php if(get_sub_field('title')) { ?>
+			<?php if(get_sub_field('background') == 'stripes' OR get_sub_field('background') == 'checkers' AND get_sub_field('title')) { ?>
 			<div class="title">
 				<?php echo get_sub_field('title'); ?>
 			</div>

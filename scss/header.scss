@@ -70,10 +70,14 @@ header {
 				}
 
 				ul {
-					display: none;
+					max-height: 0;
+					overflow: hidden;
 					li {
 						border-bottom: 0;
 					}
+				}
+				ul.show_sub_menu {
+					max-height: 100vh;
 				}
 			}
 			li.current_page_item {
@@ -300,6 +304,7 @@ p.notforgotten{
 						ul {
 							display: none;
 							right: 0;
+							max-height: 100vh;
 						}
 					}
 					li.current_page_ancestor ul {
@@ -307,18 +312,27 @@ p.notforgotten{
 					}
 
 					li.menu-item-has-children:hover{
-						background: rgba(0,0,0,0.5);
-						a {border-bottom: 0;}
+						background: rgba(0,0,0,0.9);
+						a {
+							border-bottom: 0;
+							color: white;
+							display: block;
+							&:link, &:active, &:focus, &:hover {
+								color: white;
+							}
+						}
 
 						ul {
 							position: absolute;
 							display: block;
 							padding: 0;
-							background: rgba(0,0,0,0.5);
+							background: rgba(0,0,0,0.9);
 							width: 250px;
+							z-index: 9;
 							li {
 								background: none;
 								border-top: solid 1px;
+								display: block;
 							}
 							li:hover {
 								background: transparentize($primary-color, 0.3);
