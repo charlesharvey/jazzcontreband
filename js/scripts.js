@@ -24,6 +24,7 @@
 		mobilemenu();
 
 		$(window).on('resize', function(){
+			matchheightcols();
 			if( $(window).width() >= 768) {
 				$('#navigation_menu').removeClass('visible');
 				$('ul.sub-menu').removeClass('show_sub_menu');
@@ -94,11 +95,14 @@
 
 		})
 
-		$('.section_colonnes').each(function(){
-			$(this).find('.sectioncol').matchHeight();
-			$(this).find('.content').matchHeight();
+		function matchheightcols(){
+			$('.section_colonnes').each(function(){
+				$(this).find('.sectioncol').matchHeight();
+				$(this).find('.content').matchHeight();
 
-		})
+			})
+		}
+		matchheightcols();
 
 		var left_height = $('.nexttomap').outerHeight();
 		$('.single-membre #member_map_container').css({
