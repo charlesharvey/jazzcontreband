@@ -532,9 +532,27 @@ div.line-up p {
     }
 }
 
-.event_featured_image img {
+.event_featured_image {
+    .event_featured_image_inner {
+        position: relative;
+        margin: 0 0 20px;
+
+        p.copyright_info {
+            position: absolute;
+            bottom: 4px;
+            right: 0;
+            padding: 5px;
+            background: transparentize(black,0.5);
+            color: white;
+            font-size: 10px;
+            display: inline-block;
+        }
+    }
+
+    img {
     width: 100%;
-    margin:0 0 20px;
+    margin:0 0 ;
+    }
 }
 
 .event_membres_details p{font-size: 1.8em;}

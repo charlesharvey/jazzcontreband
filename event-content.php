@@ -66,7 +66,15 @@
 				</div>
 			</div>
 			<div class="sectioncol col-sm-6 colnmb2 white event_featured_image">
-			<?php the_post_thumbnail(); ?>
+                <div class="event_featured_image_inner">
+                    <?php the_post_thumbnail(); ?>
+                    <?php $thumb_copyright= get_post(get_post_thumbnail_id())->post_content; ?>
+                    <?php if ($thumb_copyright != '') : ?>
+                    <p class="copyright_info"></p>
+                <?php endif; ?>
+                </div>
+
+
 			</div>
 		</div> <!-- END OF ROW -->
 	</div><!--  END OF CONTAINER -->
@@ -88,7 +96,12 @@
 				</div>
 			</div>
 			<div class="sectioncol col-sm-6 colnmb2 black event_featured_image">
-			<img src="<?php echo get_field('photo_minor'); ?>">
+		         <?php $minor_photo = get_field('photo_minor'); ?>
+            <div class="event_featured_image_inner">
+                <img src="<?php echo $minor_photo['url']; ?>">
+                <?php if ($minor_photo['description'] != '') : ?><p class="copyright_info"><?php echo $minor_photo['description']; ?></p><?php endif; ?>
+            </div>
+
 			</div>
 		</div> <!-- END OF ROW -->
 	</div><!--  END OF CONTAINER -->

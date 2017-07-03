@@ -1,11 +1,11 @@
 <?php /* Template Name: Salles */ get_header(); ?>
 
-	
+
 		<!-- section -->
-		<section>	
+		<section>
 
 
-			
+
 
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -18,7 +18,7 @@
 
 			<section class="section  section_colonnes">
 
-		
+
 
 <div class="container-fluid section2col">
 	<div class="row">
@@ -28,7 +28,7 @@
 			</div>
 			<div class="content">
 			<?php
-				$args = array( 'post_type' => 'membre', 'posts_per_page' => -1, 'meta_key'	=> 'country', 'meta_value'	=> 'france' );
+				$args = array( 'orderby'=>'post_title', 'order'=>'ASC', 'post_type' => 'membre', 'posts_per_page' => -1, 'meta_key'	=> 'country', 'meta_value'	=> 'france' );
 				$loop = new WP_Query( $args );
 				$i=1;
 				while ( $loop->have_posts() ) : $loop->the_post();
@@ -41,7 +41,7 @@
 				endwhile;
 
 			?>
-				
+
 			</div>
 		</div>
 		<div class="sectioncol col-sm-6 checkers colnmb2">
@@ -51,7 +51,7 @@
 			<div class="content">
 
 						<?php
-				$args = array( 'post_type' => 'membre', 'posts_per_page' => -1, 'meta_key'	=> 'country', 'meta_value'	=> 'suisse' );
+				$args = array( 'orderby'=>'post_title', 'order'=>'ASC',  'post_type' => 'membre', 'posts_per_page' => -1, 'meta_key'	=> 'country', 'meta_value'	=> 'suisse' );
 				$loop = new WP_Query( $args );
 				$i=1;
 				while ( $loop->have_posts() ) : $loop->the_post();
@@ -64,7 +64,7 @@
 				endwhile;
 
 			?>
-				
+
 			</div>
 		</div>
 	</div> <!-- END OF ROW -->
@@ -86,7 +86,7 @@
 
 		</section>
 		<!-- /section -->
-	
+
 
 
 
