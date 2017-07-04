@@ -4,6 +4,7 @@ header {
 	background: $primary-color;
 	height: 180px;
 	position: relative;
+	font-size: 1.1em;
 
 
 	 #branding {
@@ -148,7 +149,7 @@ p.login-username, p.login-password {
 
 
 .loginformcontainer {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.7);

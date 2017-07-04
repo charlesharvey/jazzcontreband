@@ -2,15 +2,11 @@
 
 
 <!-- section -->
-<section class="container">
+<section>
 
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-
-
-		<?php get_template_part('event-content'); ?>
-
-		<!-- /article -->
+				<?php get_template_part('event-content'); ?>
 
 	<?php endwhile; ?>
 

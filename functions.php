@@ -546,5 +546,12 @@ include('functions_create_reperage.php');
 
 
 
+function admin_default_page() {
+    $redirectto = get_home_url() . '/espace-membres';
+  return $redirectto;
+}
+
+add_filter('login_redirect', 'admin_default_page');
+
 
 ?>

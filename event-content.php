@@ -128,7 +128,7 @@
 			<div class=" pricing">
 				<p><strong>Tarif plein</strong>: <?php echo get_field('tarif_plein');?></p>
 				<?php if(get_field('tarifs_reduits')){ ?>
-					<div class="pp_jcb"><p><strong>Tarif réduit</strong>: <?php echo get_field('tarifs_reduits');?></p></div>
+					<div class="pp_jcb"><p><strong>Tarif(s) réduit(s)</strong>: <?php echo ' ' . get_field('tarifs_reduits');?></p></div>
 				<?php } ?>
 				<?php if(get_field('tarif_passe-partout_jcb')){ ?>
 					<div class="pp_jcb"><p><strong>Tarif passe-partout JCB</strong>: <?php echo get_field('tarif_passe-partout_jcb');?></p></div>

@@ -22,6 +22,7 @@
 					)
 			);
 				$loop = new WP_Query( $args );
+				echo $loop.count();
 				while ( $loop->have_posts() ) : $loop->the_post();
 			?>
 
