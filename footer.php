@@ -22,7 +22,7 @@
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/min/featherlight.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/min/featherlight.gallery.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/min/jquery.justifiedGallery.min.js"></script>
-<script type="text/javascript" src="<?php echo $tdu; ?>/js/scripts.js?v=0.1"></script>
+<script type="text/javascript" src="<?php echo $tdu; ?>/js/scripts.js?v=<?php echo wf_version(); ?>"></script>
 <!-- <script type="text/javascript" src="<?php echo $tdu; ?>/js/scripts.js"></script> -->
 
 <?php wp_footer(); ?>

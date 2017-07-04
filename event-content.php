@@ -69,8 +69,8 @@
                 <div class="event_featured_image_inner">
                     <?php the_post_thumbnail(); ?>
                     <?php $thumb_copyright= get_post(get_post_thumbnail_id())->post_content; ?>
-                    <?php if ($thumb_copyright != '') : ?>
-                    <p class="copyright_info"></p>
+                    <?php if ( $thumb_copyright != '') : ?>
+                    <p class="copyright_info"><?php echo $thumb_copyright; ?></p>
                 <?php endif; ?>
                 </div>
 
