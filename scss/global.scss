@@ -65,7 +65,7 @@ iframe {width: 100%!important; height: 300px;}
 
 a {transition: all 0.3s}
 a:link, a:active, a:visited {color: black;}
-a:hover {color:#ffed00;}
+a:hover {color:darken($primary-color, 20)  ;}
 
 h6 a, #submit_course_form, aside h6 a {
 	border: 2px solid $primary-color;

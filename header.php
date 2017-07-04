@@ -51,7 +51,7 @@
 				</ul>
 
 			</nav>
-			<a href="#" id="show_mobile_nav">Menu<?php include('img/burger-menu.svg'); ?></a>
+			<a href="#" id="show_mobile_nav">Menu </a>
 
 			<p id="jazz_name"></p>
 			<div class="yellow_stripes border_image border_top"></div>
