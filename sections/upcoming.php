@@ -22,7 +22,8 @@
 					)
 			);
 				$loop = new WP_Query( $args );
-				echo $loop.count();
+				$loop_nb = $loop->post_count;
+				if ($loop_nb == 1) {echo '<div class="col-sm-4"></div>';} elseif($loop_nb == 2) {echo '<div class="col-sm-2"></div>';} 
 				while ( $loop->have_posts() ) : $loop->the_post();
 			?>
 

@@ -10,7 +10,7 @@
 body {
 	font: $font;
 	line-height: 150%;
-	background: white;
+	background: black;
 	color: $black;
 }
 
@@ -136,7 +136,7 @@ img.pleine_largeur {
 }
 
 @media (min-width: 768px){
-	section img {
+	section img.smaller {
 		width: 70%;
 	    height: auto;
 	    margin: auto 15%;
@@ -164,6 +164,7 @@ img.pleine_largeur {
 		position: relative;
 		p {
 			padding:0;
+			margin-bottom: 5px;
 		}
 		a {
 			color: white;
@@ -175,13 +176,25 @@ img.pleine_largeur {
 		}
 
 		a.logout, a.login {
-				font-size: 2.5em;
-				position: absolute;
-				bottom: 17px;
-				right: 25px;
+			font-size: 1.1em;
+			text-transform: uppercase;
+			display: block;
 		}
 	}
 
+	@media (min-width: 520px){
+		footer p {
+			float: left;
+			width: 320px;
+		}
+		footer a.logout, footer a.login {
+					font-size: 1.1em;
+					text-transform: uppercase;
+					width: 160px;
+					float: right;
+				}
+
+	}
 
 
 
@@ -213,4 +226,16 @@ img.pleine_largeur {
 		left:auto;
 		right:5px;
 	}
+}
+
+.protected-post-form {
+	label.pass-label {
+	    font-size: 1em;
+			display: none;
+	}
+	input.button {
+    margin-top: -1px;
+    font-size: 1em;
+	}
+
 }

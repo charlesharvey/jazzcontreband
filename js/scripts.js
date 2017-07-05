@@ -101,6 +101,9 @@
 				$(this).find('.content').matchHeight();
 
 			})
+			$('.press .row').each(function(){
+					$(this).find('.press_content').matchHeight();
+			})
 		}
 		matchheightcols();
 

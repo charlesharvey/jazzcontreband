@@ -1,14 +1,17 @@
+</div>
+<!-- End of white div -->
 			<!-- footer -->
 			<footer class="footer" role="contentinfo">
 				<p>
 					&copy; <?php echo date('Y'); ?>  <?php bloginfo('name'); ?> | Website by <a href="//webfactor.ch" title="Webfactor">Webfactor</a>
 				</p>
 				<?php if(is_user_logged_in()) : ?>
-							<a class="logout" href="<?php echo wp_logout_url( site_url('/')  ); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+							<a class="logout" href="<?php echo wp_logout_url( site_url('/')  ); ?>">Déconnexion</a>
 				<?php else: ?>
-							<a class="login" href="<?php echo  site_url('/login'); ?>"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+							<a class="login" href="<?php echo  site_url('/login'); ?>">Connexion Membres</a>
 						</div>
 				<?php endif; ?>
+				<div class="clear"></div>
 			</footer>
 			<!-- /footer -->
 

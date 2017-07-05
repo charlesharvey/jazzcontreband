@@ -465,6 +465,20 @@ li.slide_photo_background {
 		left:35px;
 		right: 50px;
 }
+
+.event_thumb {
+    position: relative;
+}
+.press_description {
+    position: absolute;
+    bottom: 10px;
+    text-align: left;
+		left:0;
+		right: 15px;
+}
+.press_content {
+    margin-top: 20px;
+}
 .reperage_box.stripes.upcoming h3 {
     width: auto;
     float: none;

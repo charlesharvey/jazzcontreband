@@ -1,7 +1,7 @@
 
 
 
-<div class="container" style="margin-top:50px">
+<div class="container">
 <div class="row">
     <?php  $count = 0; ?>
 <?php while(have_rows('galleries')): the_row() ;  ?>
