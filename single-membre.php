@@ -10,8 +10,8 @@
 			<?php $address = get_field('address'); ?>
 			<?php $country = get_field('country'); ?>
 			<?php $website = get_field('website'); ?>
-			<?php // add http:// if not included in the url  ?>
-			<?php $website_http = ( strpos($website, '//') > 0  ) ?  $website :  'http://' . $website   ; ?>
+			<?php // add https:// if not included in the url  ?>
+			<?php $website_http = ( strpos($website, '//') > 0  ) ?  $website :  'https://' . $website   ; ?>
 
 			<section class="section  section_colonnes">
 				<div class="container-fluid section1col">

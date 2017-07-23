@@ -121,7 +121,8 @@
 			auto:!0,
 			controls:!1,
 			autoControls:!1,
-			pager:!1
+			pager:!1,
+			ticker:true
 		});
 
 		$('.bxslider').bxSlider({
