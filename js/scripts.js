@@ -105,7 +105,10 @@
 					$(this).find('.press_content').matchHeight();
 			})
 		}
-		matchheightcols();
+		setTimeout( function(){
+			matchheightcols();
+		}, 100);
+
 
 		var left_height = $('.nexttomap').outerHeight();
 		$('.single-membre #member_map_container').css({
@@ -122,7 +125,8 @@
 			controls:!1,
 			autoControls:!1,
 			pager:!1,
-			ticker:true
+			ticker:false,
+			pause: 2000
 		});
 
 		$('.bxslider').bxSlider({
