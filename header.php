@@ -46,14 +46,12 @@
 					<?php if(is_user_logged_in()) : ?>
 						<?php chilly_nav('loggedin-menu'); ?>
 						<li><a href="<?php echo wp_logout_url( site_url('/')  ); ?>">Déconnexion</a></li>
-					<?php else: ?>
-						<li><a class="login" href="<?php echo  site_url('/login'); ?>">Connexion</a></li>
 					<?php endif; ?>
 					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-377"><a target="_blank" href="https://www.facebook.com/jazzcontreband"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 				</ul>
 
 			</nav>
-			<a href="#" id="show_mobile_nav">Menu<?php include('img/burger-menu.svg'); ?></a>
+			<a href="#" id="show_mobile_nav">Menu </a>
 
 			<p id="jazz_name"></p>
 			<div class="yellow_stripes border_image border_top"></div>
@@ -115,3 +113,5 @@
 					</div>
 				</div>
 			<?php endif; ?>
+
+			<div style="background:white;">

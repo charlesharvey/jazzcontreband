@@ -48,6 +48,16 @@
 			</p>
 			<?php } ?>
 		</div>
+
+		<div class="ticket_section">
+				<?php if(get_field('ticketing_link')){ ?>
+				<p class="yellow_p"><a target="_blank" href="<?php echo get_field('ticketing_link');?>"><i class="fa fa-ticket" aria-hidden="true"></i> Billetterie</a></p><br>
+				<?php }  ?>
+				<?php if(get_field('tarif_passe-partout_jcb')){ ?>
+				<p><a target="_blank" href="https://etickets.infomaniak.com/shop/YwGYSsVfjX/"><i class="fa fa-key" aria-hidden="true"></i> Passe-Partout JCB</a></p>
+				<?php } ?>
+		</div>
+
 	</section>
 
 
@@ -128,11 +138,11 @@
 			<div class=" pricing">
 				<p><strong>Tarif plein</strong>: <?php echo get_field('tarif_plein');?></p>
 				<?php if(get_field('tarifs_reduits')){ ?>
-					<div class="pp_jcb"><p><strong>Tarif réduit</strong>: <?php echo get_field('tarifs_reduits');?></p></div>
+					<div class="pp_jcb"><p><strong>Tarif(s) réduit(s)</strong>: <?php echo ' ' . get_field('tarifs_reduits');?></p></div>
 				<?php } ?>
 				<?php if(get_field('tarif_passe-partout_jcb')){ ?>
 					<div class="pp_jcb"><p><strong>Tarif passe-partout JCB</strong>: <?php echo get_field('tarif_passe-partout_jcb');?></p></div>
-					<h6><a href="#">Acheter le passe-partout</a></h6>
+					<h6><a target="_blank" href="https://etickets.infomaniak.com/shop/YwGYSsVfjX/"><i class="fa fa-key" aria-hidden="true"></i>  Acheter le passe-partout</a></h6>
 				<?php } ?>
 			</div>
 			<?php } ?>
