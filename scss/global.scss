@@ -10,7 +10,7 @@
 body {
 	font: $font;
 	line-height: 150%;
-	background: white;
+	background: black;
 	color: $black;
 }
 
@@ -65,7 +65,7 @@ iframe {width: 100%!important; height: 300px;}
 
 a {transition: all 0.3s}
 a:link, a:active, a:visited {color: black;}
-a:hover {color:#ffed00;}
+a:hover {color:darken($primary-color, 20)  ;}
 
 h6 a, #submit_course_form, aside h6 a {
 	border: 2px solid $primary-color;
@@ -136,7 +136,7 @@ img.pleine_largeur {
 }
 
 @media (min-width: 768px){
-	section img {
+	section img.smaller {
 		width: 70%;
 	    height: auto;
 	    margin: auto 15%;
@@ -161,20 +161,40 @@ img.pleine_largeur {
 		color: white;
 		padding:20px 0;
 		text-align: center;
+		position: relative;
+		p {
+			padding:0;
+			margin-bottom: 5px;
+		}
+		a {
+			color: white;
+		}
 		a, a:link, a:focus, a:hover, a:visited{
 			color: white;
 			font-weight: bold;
 			text-decoration: none;
 		}
+
+		a.logout, a.login {
+			font-size: 1.1em;
+			text-transform: uppercase;
+			display: block;
+		}
 	}
 
-	footer p {
-		padding:0
-	}
-	footer a {
-		color: white;
-	}
+	@media (min-width: 520px){
+		footer p {
+			float: left;
+			width: 320px;
+		}
+		footer a.logout, footer a.login {
+					font-size: 1.1em;
+					text-transform: uppercase;
+					width: 160px;
+					float: right;
+				}
 
+	}
 
 
 
@@ -206,4 +226,16 @@ img.pleine_largeur {
 		left:auto;
 		right:5px;
 	}
+}
+
+.protected-post-form {
+	label.pass-label {
+	    font-size: 1em;
+			display: none;
+	}
+	input.button {
+    margin-top: -1px;
+    font-size: 1em;
+	}
+
 }

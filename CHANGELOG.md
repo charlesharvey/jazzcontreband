@@ -1,8 +1,8 @@
-### [webfactor Blank](http://webfactor.com) Changelog
+### [webfactor Blank](https://webfactor.com) Changelog
 
 ## 1.4.3 (02 December, 2013)
 
-* Update [conditionizr](http://conditionizr.com) to version 4.0.0
+* Update [conditionizr](https://conditionizr.com) to version 4.0.0
 * Update jQuery to v1.10.2
 * Update Google Analytics snippet to _new_ universal snippet
 * Improved SVG script
@@ -28,7 +28,7 @@
 * Add apple-touch-icon-precomposed to &lt;head&gt;
 * Moved favicon.ico to 'img/icons'
 * Moved new apple touch icon to 'img/icons'
-* Remove Conditionizr default &lt;head&gt; setup and add config URL (cleaner code from install) please see [conditionizr](http://conditionizr.com/docs.html) for configuration
+* Remove Conditionizr default &lt;head&gt; setup and add config URL (cleaner code from install) please see [conditionizr](https://conditionizr.com/docs.html) for configuration
 * Reordered some meta, links in &lt;head&gt; for better readability/consistency
 * Add a few structural (but empty) classes into CSS for fast styling upon install
 * Few CSS comments added to label areas/components better
@@ -133,12 +133,12 @@
 ## 1.2.7 (23 January, 2013)
 
 * Update to jQuery 1.9.0
-* Removed [Conditionizr](http://conditionizr.com)
+* Removed [Conditionizr](https://conditionizr.com)
 * Remove Apple Touch Icons
 
 ## 1.2.6 (24 December, 2012)
 
-* [Conditionizr](http://conditionizr.com) legacy script and style loader added
+* [Conditionizr](https://conditionizr.com) legacy script and style loader added
 	* Conditional statements removed from HTML tag (HTML classes added dynamically with Conditionizr)
 	* Conditional statement for mediaqueries.min.js removed (added dynamically with Conditionizr, included inside scripts.js)
 	* conditionizr.min.js and conditionizr.js enqueued
@@ -163,7 +163,7 @@
 * Custom default Gravatar now built in, with demo gravatar.jpg inside the 'img' folder, swap it out
 * Changed date format from the_date to the_time('F j, Y')
 * Changed time format from the_time to the_time('g:i a')
-* Changes above show the exact same when parsed, but have been changed due to the way WordPress works, which only shows one 'Date' for posts created on the same day. [More here](http://codex.wordpress.org/Function_Reference/the_date).
+* Changes above show the exact same when parsed, but have been changed due to the way WordPress works, which only shows one 'Date' for posts created on the same day. [More here](https://codex.wordpress.org/Function_Reference/the_date).
 
 ## 1.2.3 (13 October, 2012)
 

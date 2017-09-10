@@ -4,6 +4,7 @@ header {
 	background: $primary-color;
 	height: 180px;
 	position: relative;
+	font-size: 1.1em;
 
 
 	 #branding {
@@ -148,7 +149,7 @@ p.login-username, p.login-password {
 
 
 .loginformcontainer {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.7);
@@ -217,12 +218,19 @@ p.notforgotten{
 
 #show_mobile_nav {
     // background: url(../img/burger-menu.svg) no-repeat;
-    text-indent: -9999px;
-    background-size: 40px;
-    height: 40px;
-    width: 40px;
+    //text-indent: -9999px;
+		font-size: 1.2em;
+		text-transform: uppercase;
+		font-weight: bold;
+		background-color: black;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 10px;
+		text-decoration: none;
+		border: 1px solid $primary-color;
+
     position: absolute;
-    top: 30px;
+    top: 41px;
     right: 15px;
     z-index: 9999999;
 }
