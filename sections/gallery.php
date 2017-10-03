@@ -6,7 +6,7 @@
 	<br>
 	<div class="img_gallery ">
 		<?php foreach($images as $image): ?>
-			<a class="gallery" href="<?php echo ($image['url']); ?>"><img src="<?php echo ($image['url']); ?>" alt="" /></a>
+			<a class="gallery" href="<?php echo ($image['url']); ?>"><img src="<?php echo ($image['sizes']['medium']); ?>" alt="" /></a>
 		<?php endforeach; ?>
 	</div>
 	<br>
