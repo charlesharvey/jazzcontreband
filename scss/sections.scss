@@ -311,9 +311,9 @@ html body section aside h6 a, aside.calendar_box h6 a  {
 #events_calendar .clndr .days-container .days .day.event, #events_calendar .clndr .days-container .days .empty.event {
     background-color: black!important;
     color: #ffed03!important;
-    border-radius: 50%!important;
-    width: 31px!important;
-    margin: 0 5.78px!important;
+    border-radius: 5px!important;
+    // width: 31px!important;
+    // margin: 0 5.78px!important;
 }
 
 #events_calendar .clndr .days-container .days .day.event:hover, #events_calendar .clndr .days-container .days .empty.event:hover {

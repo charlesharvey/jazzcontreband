@@ -107,13 +107,17 @@
 		}
 		setTimeout( function(){
 			matchheightcols();
+
+
+    		var left_height = $('.nexttomap').outerHeight();
+
+    		$('.single-membre #member_map_container').css({
+    			'height' : left_height
+    		})
+
+
 		}, 100);
 
-
-		var left_height = $('.nexttomap').outerHeight();
-		$('.single-membre #member_map_container').css({
-			'height' : left_height
-		})
 
 
 		$('#partner_slider').bxSlider({
@@ -277,15 +281,20 @@
 
 			// This is needed to set the zoom after fitbounds,
 			google.maps.event.addListener(member_map, 'zoom_changed', function() {
-				if (this.getZoom() > 15 && this.initialZoom == true) {
+				if (this.getZoom() > 16 && this.initialZoom == true) {
 					// Change max/min zoom here
-					this.setZoom(15);
+					this.setZoom(16);
 					this.initialZoom = false;
 				}
 
 			});
 			member_map.initialZoom = true;
 			member_map.fitBounds(member_bounds);
+
+            // fix bug where map doesnt render sometimes
+            setTimeout( function(){
+                google.maps.event.trigger(member_map, 'resize');
+            }, 100)
 
 
 		};
@@ -358,7 +367,7 @@ function processEvents(events, date){
 				}
 
 if(!event['thumbnail']){
-	event['thumbnail'] = "https://webfactor.ch/projets/jazzcontreband/wp-content/themes/jazzcontreband/img/placeholder.jpg";
+	event['thumbnail'] = "https://jazzcontreband.com/wp-content/themes/jazzcontreband/img/placeholder.jpg";
 }
 
 		};
@@ -377,15 +386,16 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 
 
 		var customMarker = {
-			url: 'https://webfactor.ch/projets/jazzcontreband/wp-content/themes/jazzcontreband/img/marker.svg',
-			size: new google.maps.Size(20, 20),
+			url: 'https://jazzcontreband.com/wp-content/themes/jazzcontreband/img/marker.svg',
+			size: new google.maps.Size(14, 20),
 			origin: new google.maps.Point(0, 0),
-			anchor: new google.maps.Point(15, 22)
+		//	anchor: new google.maps.Point(15, 22)
+			anchor: new google.maps.Point(0, 0)
 		};
 
 		var latlng = new google.maps.LatLng(  latitude , longitude);
 
-				console.log(latlng);
+
 		var marker = new google.maps.Marker({
 			map: map,
 			position: latlng,
