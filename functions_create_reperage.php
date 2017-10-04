@@ -109,7 +109,7 @@ $rp_frm .= '<div class="container ">';
       $rp_frm .=  make_reperage_field('style', 'Style de musique',  $reperage_id, 'input');
       $rp_frm .=  make_reperage_field('origine', 'Origine',  $reperage_id, 'input');
       $rp_frm .=  make_reperage_field('numbre', 'Nombre de musiciens',  $reperage_id, 'input');
-      $rp_frm .=  make_reperage_field('country', 'Pays',  $reperage_id, 'radio', ['France', 'Suisse']  );
+      $rp_frm .=  make_reperage_field('country', 'Pays',  $reperage_id, 'radio', ['France', 'Suisse', 'Franco-Suisse']  );
     $rp_frm .= '</div>';
 
   $rp_frm .= '</div>';

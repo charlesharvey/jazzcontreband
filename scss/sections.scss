@@ -133,6 +133,9 @@ section.section.section_partners {
     background-image: url(../img/france.jpg)!important;
     background-size: 100% 100%!important;
 }
+a.flag.suisse_flag + a.flag.france_flag {
+    margin-left: 3px;
+}
 
 .links a, a.edit_link, .membres_details i{
     font-size: 1.8em;
@@ -211,7 +214,7 @@ p.added {
 label.inline_label input {
     display: inline-block;
     width: auto;
-    margin: 0 24px 0 12px;
+    margin: 0 15px 0 5px;
 }
 form#delete_course_form {
     margin: 0 -24px 20px 16px;

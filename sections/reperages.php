@@ -22,6 +22,7 @@ $rc = ( isset($_GET['country'])) ? $_GET['country'] : false;
 
 					<a href="?country=France" class="country_search">> France</a>
 					<a href="?country=Suisse" class="country_search">> Suisse</a>
+					<a href="?country=Franco-Suisse" class="country_search">> Franco-Suisse</a>
 					<a href="?#reperages">> Tous les repérages</a>
 
 					<h4>Mes repérages</h4>
