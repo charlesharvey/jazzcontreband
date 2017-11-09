@@ -294,7 +294,13 @@
             // fix bug where map doesnt render sometimes
             setTimeout( function(){
                 google.maps.event.trigger(member_map, 'resize');
-            }, 100)
+            }, 2000)
+
+						if ($member_locations.length == 1) {
+                var member_location = $member_locations[0];
+                console.log(member_location.lat, member_location.lng);
+                member_map.setCenter(new google.maps.LatLng(member_location.lat, member_location.lng));
+            }
 
 
 		};
