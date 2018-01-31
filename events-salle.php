@@ -1,29 +1,33 @@
-<div class="black">
+
+<?php
+	$event_type = get_field('type_devenement', 'option');
+ 	$id = get_the_ID();
+	$today = date("Ymd");
+	$args = array(
+		'post_type' => $event_type,
+		'posts_per_page' => -1,
+		'meta_key'   => 'dates_0_date',
+		'orderby'    => 'meta_value_num',
+		'order'      => 'ASC',
+		'meta_query' => array(
+			array(
+				'key'     => 'members',
+				'value'   => $id,
+				'compare' => '=',
+			)
+		)
+);
+	$loop = new WP_Query( $args );
+	$post_count = $loop->post_count;
+?>
+<?php if($post_count >0) : ?>
+
+	<div class="black">
 	<div class="container-fluid">
 	<h2 style="background: white; display: inline-block; padding: 0 20px; color: black; margin: 0 0 20px;">Au programme</h2><br><br>
 		<div class="row">
-			<?php
-			 $id = get_the_ID();
-				$event_type = get_sub_field('event_type');
-				$today = date("Ymd");
-				$args = array(
-					'post_type' => 'evenement_festival',
-					'posts_per_page' => -1,
-					'meta_key'   => 'dates_0_date',
-					'orderby'    => 'meta_value_num',
-					'order'      => 'ASC',
-					'meta_query' => array(
-						array(
-							'key'     => 'members',
-							'value'   => $id,
-							'compare' => '=',
-						)
-					)
-			);
-				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();
-			?>
-
+			
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<div class="col-sm-4">
 			<a href="<?php the_permalink(); ?>">
 				<div class="reperage_box stripes upcoming">
@@ -53,9 +57,11 @@
 			</div>
 
 			<?php endwhile; ?>
-			<?php wp_reset_query(); ?>
+			
 		</div>
 
 
 	</div>
 </div>
+<?php endif; ?>
+<?php wp_reset_query(); ?>
