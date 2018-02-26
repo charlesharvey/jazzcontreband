@@ -1,8 +1,10 @@
 
 <?php
 	$event_type = get_field('type_devenement', 'option');
+	$cat = get_field('saison_a_afficher_sur_les_salles', 'option');
  	$id = get_the_ID();
 	$today = date("Ymd");
+
 	$args = array(
 		'post_type' => $event_type,
 		'posts_per_page' => -1,
@@ -15,7 +17,14 @@
 				'value'   => $id,
 				'compare' => '=',
 			)
-		)
+		),
+		'tax_query' => array(
+		array(
+			'taxonomy' => 'category',
+			'field'    => 'slug',
+			'terms'    => $cat,
+		),
+	),
 );
 	$loop = new WP_Query( $args );
 	$post_count = $loop->post_count;
@@ -26,7 +35,7 @@
 	<div class="container-fluid">
 	<h2 style="background: white; display: inline-block; padding: 0 20px; color: black; margin: 0 0 20px;">Au programme</h2><br><br>
 		<div class="row">
-			
+
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<div class="col-sm-4">
 			<a href="<?php the_permalink(); ?>">
@@ -57,7 +66,7 @@
 			</div>
 
 			<?php endwhile; ?>
-			
+
 		</div>
 
 

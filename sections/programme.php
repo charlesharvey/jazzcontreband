@@ -41,9 +41,9 @@
 
 <?php $event_type = get_sub_field('event_type'); ?>
 <?php if($event_type=='evenement_festival'){
-	$category = get_sub_field('year_festival');
+	echo $category = get_sub_field('year_festival');
 } else {
-	$category = get_sub_field('year_season');
+	echo $category = get_sub_field('year_season');
 } ?>
 <script type="text/javascript">
 	var calendar_api_url = '<?php echo home_url(); ?>/api/v1/?<?php echo ($event_type); ?>=true&category=<?php echo $category; ?> ';
