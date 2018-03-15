@@ -265,3 +265,15 @@ img.pleine_largeur {
 	}
 
 }
+
+.acceptance_box {
+    padding: 20px;
+    background: $primary-color;
+    margin:20px 0;
+    color: $black;
+    input {
+        display: inline;
+        padding: 5px;
+        margin:5px;
+    }
+}
