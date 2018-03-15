@@ -271,9 +271,16 @@ img.pleine_largeur {
     background: $primary-color;
     margin:20px 0;
     color: $black;
+    label {
+        display: flex;
+    }
+    span {
+        line-height: 120%;
+    }
     input {
         display: inline;
-        padding: 5px;
-        margin:5px;
+        width: auto;
+        padding: 0px;
+        margin:5px 10px 5px 0;
     }
 }
